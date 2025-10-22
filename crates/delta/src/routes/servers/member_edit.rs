@@ -217,6 +217,8 @@ pub async fn edit(
 
             EventV1::UserMoveVoiceChannel {
                 node: new_node,
+                from: old_voice_channel.id().to_string(),
+                to: new_voice_channel.id().to_string(),
                 token,
             }
             .p_user(target_user.id.clone(), db)

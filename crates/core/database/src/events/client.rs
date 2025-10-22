@@ -295,7 +295,9 @@ pub enum EventV1 {
     },
     UserMoveVoiceChannel {
         node: String,
-        token: String
+        from: String,
+        to: String,
+        token: String,
     }
 }
 
