@@ -1,7 +1,7 @@
 #[macro_use]
 extern crate rocket;
 #[macro_use]
-extern crate revolt_rocket_okapi;
+extern crate utoipa;
 #[macro_use]
 extern crate serde_json;
 
@@ -15,6 +15,8 @@ use revolt_ratelimits::rocket as ratelimiter;
 use rocket::{Build, Rocket};
 use rocket_cors::{AllowedOrigins, CorsOptions};
 use rocket_prometheus::PrometheusMetrics;
+use utoipa::OpenApi;
+use utoipa_scalar::{Scalar, Servable};
 use std::net::Ipv4Addr;
 use std::str::FromStr;
 
@@ -73,22 +75,6 @@ pub async fn web() -> Rocket<Build> {
     .to_cors()
     .expect("Failed to create CORS.");
 
-    // Configure Swagger
-    let swagger = revolt_rocket_okapi::swagger_ui::make_swagger_ui(
-        &revolt_rocket_okapi::swagger_ui::SwaggerUIConfig {
-            url: "/openapi.json".to_owned(),
-            ..Default::default()
-        },
-    )
-    .into();
-
-    let swagger_0_8 = revolt_rocket_okapi::swagger_ui::make_swagger_ui(
-        &revolt_rocket_okapi::swagger_ui::SwaggerUIConfig {
-            url: "/0.8/openapi.json".to_owned(),
-            ..Default::default()
-        },
-    )
-    .into();
 
     // Configure Rabbit
     let connection = Connection::open(&OpenConnectionArguments::new(
@@ -131,8 +117,7 @@ pub async fn web() -> Rocket<Build> {
         .mount("/metrics", prometheus)
         .mount("/", rocket_cors::catch_all_options_routes())
         .mount("/", ratelimiter::routes())
-        .mount("/swagger/", swagger)
-        .mount("/0.8/swagger/", swagger_0_8)
+        .mount("/", Scalar::with_url("/scalar", routes::ApiDoc::openapi()))
         .manage(authifier)
         .manage(db)
         .manage(amqp)

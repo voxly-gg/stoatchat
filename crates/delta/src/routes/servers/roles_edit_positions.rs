@@ -10,7 +10,7 @@ use rocket::{serde::json::Json, State};
 /// # Edits server roles ranks
 ///
 /// Edit's server role's ranks.
-#[openapi(tag = "Server Permissions")]
+#[utoipa::path(tag = "Server Permissions")]
 #[patch("/<target>/roles/ranks", data = "<data>")]
 pub async fn edit_role_ranks(
     db: &State<Database>,

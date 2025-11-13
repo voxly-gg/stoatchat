@@ -11,7 +11,7 @@ use rocket_empty::EmptyResponse;
 /// # Pins a message
 ///
 /// Pins a message by its id.
-#[openapi(tag = "Messaging")]
+#[utoipa::path(tag = "Messaging")]
 #[post("/<target>/messages/<msg>/pin")]
 pub async fn message_pin(
     db: &State<Database>,

@@ -10,7 +10,7 @@ use rocket::{serde::json::Json, State};
 /// # Fetch Member
 ///
 /// Retrieve a member.
-#[openapi(tag = "Server Members")]
+#[utoipa::path(tag = "Server Members")]
 #[get("/<target>/members/<member>?<roles>")]
 pub async fn fetch(
     db: &State<Database>,

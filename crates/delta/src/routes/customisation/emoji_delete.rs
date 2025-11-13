@@ -11,7 +11,7 @@ use rocket_empty::EmptyResponse;
 /// # Delete Emoji
 ///
 /// Delete an emoji by its id.
-#[openapi(tag = "Emojis")]
+#[utoipa::path(tag = "Emojis")]
 #[delete("/emoji/<emoji_id>")]
 pub async fn delete_emoji(
     db: &State<Database>,

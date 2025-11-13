@@ -8,7 +8,7 @@ use rocket_empty::EmptyResponse;
 /// # Remove Member from Group
 ///
 /// Removes a user from the group.
-#[openapi(tag = "Groups")]
+#[utoipa::path(tag = "Groups")]
 #[delete("/<target>/recipients/<member>")]
 pub async fn remove_member(
     db: &State<Database>,

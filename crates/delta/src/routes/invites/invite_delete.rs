@@ -10,7 +10,7 @@ use rocket_empty::EmptyResponse;
 /// # Delete Invite
 ///
 /// Delete an invite by its id.
-#[openapi(tag = "Invites")]
+#[utoipa::path(tag = "Invites")]
 #[delete("/<target>")]
 pub async fn delete(db: &State<Database>, user: User, target: Reference<'_>) -> Result<EmptyResponse> {
     let invite = target.as_invite(db).await?;

@@ -9,7 +9,7 @@ use validator::Validate;
 /// # Edit User
 ///
 /// Edit currently authenticated user.
-#[openapi(tag = "User Information")]
+#[utoipa::path(tag = "User Information")]
 #[patch("/<target>", data = "<data>")]
 pub async fn edit(
     db: &State<Database>,

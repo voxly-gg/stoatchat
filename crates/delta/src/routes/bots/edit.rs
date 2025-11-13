@@ -9,7 +9,7 @@ use validator::Validate;
 /// # Edit Bot
 ///
 /// Edit bot details by its id.
-#[openapi(tag = "Bots")]
+#[utoipa::path(tag = "Bots")]
 #[patch("/<target>", data = "<data>")]
 pub async fn edit_bot(
     db: &State<Database>,
@@ -60,15 +60,8 @@ pub async fn edit_bot(
         ..Default::default()
     };
 
-    bot.update(
-        db,
-        partial,
-        remove
-            .into_iter()
-            .map(|v| v.into())
-            .collect(),
-    )
-    .await?;
+    bot.update(db, partial, remove.into_iter().map(|v| v.into()).collect())
+        .await?;
 
     Ok(Json(v0::BotWithUserResponse {
         bot: bot.into(),

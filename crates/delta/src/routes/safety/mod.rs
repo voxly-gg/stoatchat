@@ -1,10 +1,17 @@
-use revolt_rocket_okapi::revolt_okapi::openapi3::OpenApi;
 use rocket::Route;
 
 mod report_content;
 
-pub fn routes() -> (Vec<Route>, OpenApi) {
-    openapi_get_routes_spec![
+#[derive(OpenApi)]
+#[openapi(
+    paths(
+        report_content::report_content
+    )
+)]
+pub struct ApiDoc;
+
+pub fn routes() -> Vec<Route> {
+    routes![
         // Reports
         report_content::report_content,
     ]

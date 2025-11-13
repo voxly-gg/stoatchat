@@ -10,7 +10,7 @@ use rocket::{serde::json::Json, State};
 /// # Fetch Invites
 ///
 /// Fetch all server invites.
-#[openapi(tag = "Server Members")]
+#[utoipa::path(tag = "Server Members")]
 #[get("/<target>/invites")]
 pub async fn invites(
     db: &State<Database>,

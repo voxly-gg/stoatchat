@@ -8,7 +8,7 @@ use rocket_empty::EmptyResponse;
 /// # Unpins a message
 ///
 /// Unpins a message by its id.
-#[openapi(tag = "Messaging")]
+#[utoipa::path(tag = "Messaging")]
 #[delete("/<target>/messages/<msg>/pin")]
 pub async fn message_unpin(
     db: &State<Database>,

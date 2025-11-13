@@ -13,7 +13,7 @@ use rocket::{serde::json::Json, State};
 /// Creates an invite to this channel.
 ///
 /// Channel must be a `TextChannel`.
-#[openapi(tag = "Channel Invites")]
+#[utoipa::path(tag = "Channel Invites")]
 #[post("/<target>/invites")]
 pub async fn create_invite(
     db: &State<Database>,

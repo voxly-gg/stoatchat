@@ -12,7 +12,7 @@ type Data = HashMap<String, String>;
 /// # Set Settings
 ///
 /// Upload data to save to settings.
-#[openapi(tag = "Sync")]
+#[utoipa::path(tag = "Sync")]
 #[post("/settings/set?<options..>", data = "<data>")]
 pub async fn set(
     db: &State<Database>,

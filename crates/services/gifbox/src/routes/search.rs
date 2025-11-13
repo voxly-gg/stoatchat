@@ -3,7 +3,7 @@ use axum::{
     Json,
 };
 use revolt_database::User;
-use revolt_result::{create_error, Result};
+use revolt_result::{Error, Result, create_error};
 use serde::Deserialize;
 use utoipa::IntoParams;
 
@@ -30,10 +30,11 @@ pub struct SearchQueryParams {
     get,
     path = "/search",
     tag = "GIFs",
-    security(("User Token" = []), ("Bot Token" = [])),
+    security(("Session-Token" = []), ("Bot-Token" = [])),
     params(SearchQueryParams),
     responses(
-        (status = 200, description = "Search results", body = inline(types::PaginatedMediaResponse))
+        (status = 200, description = "Search results", body = types::PaginatedMediaResponse),
+        (status = "default", body = Error)
     )
 )]
 pub async fn search(

@@ -1,9 +1,17 @@
-use revolt_rocket_okapi::revolt_okapi::openapi3::OpenApi;
 use rocket::Route;
 
 mod complete;
 mod hello;
 
-pub fn routes() -> (Vec<Route>, OpenApi) {
-    openapi_get_routes_spec![hello::hello, complete::complete]
+#[derive(OpenApi)]
+#[openapi(
+    paths(
+        hello::hello, complete::complete
+    )
+)]
+pub struct ApiDoc;
+
+
+pub fn routes() -> Vec<Route> {
+    routes![hello::hello, complete::complete]
 }

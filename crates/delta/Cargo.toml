@@ -35,7 +35,7 @@ nanoid = "0.4.0"
 serde_json = "1.0.57"
 serde = { version = "1.0.115", features = ["derive"] }
 validator = { version = "0.16", features = ["derive"] }
-iso8601-timestamp = { version = "0.2.11", features = [] }
+iso8601-timestamp = { version = "0.4.0", features = [] }
 
 # async
 futures = "0.3.8"
@@ -60,8 +60,8 @@ rocket_authifier = { version = "1.0.15" }
 rocket_prometheus = "0.10.0-rc.3"
 
 # spec generation
-schemars = "0.8.8"
-revolt_rocket_okapi = { version = "0.10.0", features = ["swagger"] }
+utoipa = { version = "5.4.0", features = ["rocket_extras"] }
+utoipa-scalar = { version = "0.3.0", features = ["rocket"] }
 
 # rabbit
 amqprs = { version = "1.7.0" }
@@ -72,15 +72,16 @@ revolt-config = { path = "../core/config" }
 revolt-database = { path = "../core/database", features = [
     "rocket-impl",
     "redis-is-patched",
+    "utoipa"
 ] }
 revolt-models = { path = "../core/models", features = [
-    "schemas",
+    "utoipa",
     "validator",
     "rocket",
 ] }
 revolt-presence = { path = "../core/presence" }
-revolt-result = { path = "../core/result", features = ["rocket", "okapi"] }
-revolt-permissions = { path = "../core/permissions", features = ["schemas"] }
+revolt-result = { path = "../core/result", features = ["rocket", "utoipa"] }
+revolt-permissions = { path = "../core/permissions", features = ["utoipa"] }
 revolt-ratelimits = { path = "../core/ratelimits", features = ["rocket"] }
 
 [build-dependencies]

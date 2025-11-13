@@ -6,7 +6,7 @@ use rocket::{serde::json::Json, State};
 /// # Fetch Bot
 ///
 /// Fetch details of a bot you own by its id.
-#[openapi(tag = "Bots")]
+#[utoipa::path(tag = "Bots")]
 #[get("/<bot>")]
 pub async fn fetch_bot(
     db: &State<Database>,

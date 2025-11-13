@@ -11,7 +11,7 @@ use rocket::{serde::json::Json, State};
 /// # Join Call
 ///
 /// Asks the voice server for a token to join the call.
-#[openapi(tag = "Voice")]
+#[utoipa::path(tag = "Voice")]
 #[post("/<target>/join_call")]
 pub async fn call(
     db: &State<Database>,

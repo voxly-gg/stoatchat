@@ -12,7 +12,7 @@ use rocket::{serde::json::Json, State};
 /// Sets permissions for the default role in this channel.
 ///
 /// Channel must be a `Group`, `TextChannel` or `VoiceChannel`.
-#[openapi(tag = "Channel Permissions")]
+#[utoipa::path(tag = "Channel Permissions")]
 #[put("/<target>/permissions/default", data = "<data>", rank = 1)]
 pub async fn set_default_channel_permissions(
     db: &State<Database>,

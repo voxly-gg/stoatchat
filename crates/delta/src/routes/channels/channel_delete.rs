@@ -11,7 +11,7 @@ use rocket_empty::EmptyResponse;
 /// # Close Channel
 ///
 /// Deletes a server channel, leaves a group or closes a group.
-#[openapi(tag = "Channel Information")]
+#[utoipa::path(tag = "Channel Information")]
 #[delete("/<target>?<options..>")]
 pub async fn delete(
     db: &State<Database>,

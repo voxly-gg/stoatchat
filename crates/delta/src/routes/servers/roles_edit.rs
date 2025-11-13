@@ -11,7 +11,7 @@ use validator::Validate;
 /// # Edit Role
 ///
 /// Edit a role by its id.
-#[openapi(tag = "Server Permissions")]
+#[utoipa::path(tag = "Server Permissions")]
 #[patch("/<target>/roles/<role_id>", data = "<data>", rank = 1)]
 pub async fn edit(
     db: &State<Database>,

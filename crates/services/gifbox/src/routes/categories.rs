@@ -3,7 +3,7 @@ use axum::{
     Json,
 };
 use revolt_database::User;
-use revolt_result::{create_error, Result};
+use revolt_result::{create_error, Result, Error};
 use serde::Deserialize;
 use utoipa::IntoParams;
 
@@ -21,10 +21,11 @@ pub struct CategoriesQueryParams {
     get,
     path = "/categories",
     tag = "GIFs",
-    security(("User Token" = []), ("Bot Token" = [])),
+    security(("Session-Token" = []), ("Bot-Token" = [])),
     params(CategoriesQueryParams),
     responses(
-        (status = 200, description = "Categories results", body = inline(Vec<types::CategoryResponse>))
+        (status = 200, description = "Categories results", body = inline(Vec<types::CategoryResponse>)),
+        (status = "default", body = Error)
     )
 )]
 pub async fn categories(

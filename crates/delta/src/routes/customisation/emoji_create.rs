@@ -10,7 +10,7 @@ use rocket::{serde::json::Json, State};
 /// # Create New Emoji
 ///
 /// Create an emoji by its Autumn upload id.
-#[openapi(tag = "Emojis")]
+#[utoipa::path(tag = "Emojis")]
 #[put("/emoji/<id>", data = "<data>")]
 pub async fn create_emoji(
     db: &State<Database>,

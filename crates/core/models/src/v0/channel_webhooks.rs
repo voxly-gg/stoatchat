@@ -86,10 +86,10 @@ auto_derived!(
     /// Information for the webhook
     #[cfg_attr(feature = "validator", derive(Validate))]
     pub struct CreateWebhookBody {
-        #[validate(length(min = 1, max = 32))]
+        #[cfg_attr(feature = "validator", validate(length(min = 1, max = 32)))]
         pub name: String,
 
-        #[validate(length(min = 1, max = 128))]
+        #[cfg_attr(feature = "validator", validate(length(min = 1, max = 128)))]
         pub avatar: Option<String>,
     }
 );

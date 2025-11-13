@@ -80,9 +80,6 @@ async fn proxy(Query(UrlQuery { url }): Query<UrlQuery>) -> Result<impl IntoResp
     params(
         ("url" = String, Query, description = "URL to fetch")
     ),
-    security(
-        ("api_key" = [])
-    )
 )]
 async fn embed(
     Query(UrlQuery { url }): Query<UrlQuery>,

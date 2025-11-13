@@ -4,10 +4,6 @@ use std::fmt::Display;
 #[macro_use]
 extern crate serde;
 
-#[cfg(feature = "schemas")]
-#[macro_use]
-extern crate schemars;
-
 #[cfg(feature = "utoipa")]
 #[macro_use]
 extern crate utoipa;
@@ -18,15 +14,11 @@ pub mod rocket;
 #[cfg(feature = "axum")]
 pub mod axum;
 
-#[cfg(feature = "okapi")]
-pub mod okapi;
-
 /// Result type with custom Error
 pub type Result<T, E = Error> = std::result::Result<T, E>;
 
 /// Error information
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "schemas", derive(JsonSchema))]
 #[cfg_attr(feature = "utoipa", derive(ToSchema))]
 #[derive(Debug, Clone)]
 pub struct Error {
@@ -49,7 +41,6 @@ impl std::error::Error for Error {}
 /// Possible error types
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "serde", serde(tag = "type"))]
-#[cfg_attr(feature = "schemas", derive(JsonSchema))]
 #[cfg_attr(feature = "utoipa", derive(ToSchema))]
 #[derive(Debug, Clone)]
 pub enum ErrorType {

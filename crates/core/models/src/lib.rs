@@ -2,10 +2,6 @@
 #[macro_use]
 extern crate serde;
 
-#[cfg(feature = "schemas")]
-#[macro_use]
-extern crate schemars;
-
 #[cfg(feature = "utoipa")]
 #[macro_use]
 extern crate utoipa;
@@ -21,7 +17,6 @@ macro_rules! auto_derived {
     ( $( $item:item )+ ) => {
         $(
             #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-            #[cfg_attr(feature = "schemas", derive(JsonSchema))]
             #[cfg_attr(feature = "utoipa", derive(ToSchema))]
             #[derive(Debug, Clone, Eq, PartialEq)]
             $item
@@ -32,19 +27,8 @@ macro_rules! auto_derived {
 #[cfg(feature = "partials")]
 macro_rules! auto_derived_partial {
     ( $item:item, $name:expr ) => {
-        #[derive(
-            OptionalStruct, Debug, Clone, Eq, PartialEq, Serialize, Deserialize, JsonSchema,
-        )]
-        #[optional_derive(
-            Debug,
-            Clone,
-            Eq,
-            PartialEq,
-            Serialize,
-            Deserialize,
-            JsonSchema,
-            Default
-        )]
+        #[derive(OptionalStruct, Debug, Clone, Eq, PartialEq, Serialize, Deserialize, ToSchema)]
+        #[optional_derive(Debug, Clone, Eq, PartialEq, Serialize, Deserialize, ToSchema, Default)]
         #[optional_name = $name]
         #[opt_skip_serializing_none]
         #[opt_some_priority]
@@ -55,7 +39,7 @@ macro_rules! auto_derived_partial {
 #[cfg(not(feature = "partials"))]
 macro_rules! auto_derived_partial {
     ( $item:item, $name:expr ) => {
-        #[derive(Debug, Clone, Eq, PartialEq, Serialize, Deserialize, JsonSchema)]
+        #[derive(Debug, Clone, Eq, PartialEq, Serialize, Deserialize, ToSchema)]
         $item
     };
 }

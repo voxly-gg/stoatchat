@@ -1,10 +1,10 @@
-#[cfg(feature = "schemas")]
-use schemars::JsonSchema;
+#[cfg(feature = "utoipa")]
+use utoipa::ToSchema;
 
 /// Representation of a single permission override
 #[derive(Debug, Clone, Eq, PartialEq, Default)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[cfg_attr(feature = "schemas", derive(JsonSchema))]
+#[cfg_attr(feature = "utoipa", derive(ToSchema))]
 pub struct Override {
     /// Allow bit flags
     pub allow: u64,
@@ -15,7 +15,7 @@ pub struct Override {
 /// Data permissions Field - contains both allow and deny
 #[derive(Debug, Clone, Eq, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[cfg_attr(feature = "schemas", derive(JsonSchema))]
+#[cfg_attr(feature = "utoipa", derive(ToSchema))]
 pub struct DataPermissionsField {
     pub permissions: Override,
 }
@@ -23,7 +23,7 @@ pub struct DataPermissionsField {
 /// Data permissions Value - contains allow
 #[derive(Debug, Clone, Copy, Eq, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[cfg_attr(feature = "schemas", derive(JsonSchema))]
+#[cfg_attr(feature = "utoipa", derive(ToSchema))]
 pub struct DataPermissionsValue {
     pub permissions: u64,
 }
@@ -31,7 +31,7 @@ pub struct DataPermissionsValue {
 /// Data permissions Poly - can contain either Value or Field
 #[derive(Debug, Clone, Eq, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[cfg_attr(feature = "schemas", derive(JsonSchema))]
+#[cfg_attr(feature = "utoipa", derive(ToSchema))]
 #[cfg_attr(feature = "serde", serde(untagged))]
 pub enum DataPermissionPoly {
     Value {
@@ -48,7 +48,7 @@ pub enum DataPermissionPoly {
 /// as it appears on models and in the database
 #[derive(Debug, Clone, Copy, Default, Eq, PartialEq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
-#[cfg_attr(feature = "schemas", derive(JsonSchema))]
+#[cfg_attr(feature = "utoipa", derive(ToSchema))]
 pub struct OverrideField {
     /// Allow bit flags
     pub a: i64,

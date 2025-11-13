@@ -10,7 +10,7 @@ use rocket_empty::EmptyResponse;
 /// # Mark Server As Read
 ///
 /// Mark all channels in a server as read.
-#[openapi(tag = "Server Information")]
+#[utoipa::path(tag = "Server Information")]
 #[put("/<target>/ack")]
 pub async fn ack(db: &State<Database>, user: User, target: Reference<'_>) -> Result<EmptyResponse> {
     if user.bot.is_some() {

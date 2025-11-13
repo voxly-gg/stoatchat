@@ -14,7 +14,7 @@ use validator::Validate;
 /// # Creates a webhook
 ///
 /// Creates a webhook which 3rd party platforms can use to send messages
-#[openapi(tag = "Webhooks")]
+#[utoipa::path(tag = "Webhooks")]
 #[post("/<target>/webhooks", data = "<data>")]
 pub async fn create_webhook(
     db: &State<Database>,

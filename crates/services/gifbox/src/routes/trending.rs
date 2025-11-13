@@ -3,7 +3,7 @@ use axum::{
     Json,
 };
 use revolt_database::User;
-use revolt_result::{create_error, Result};
+use revolt_result::{create_error, Result, Error};
 use serde::Deserialize;
 use utoipa::IntoParams;
 
@@ -25,10 +25,11 @@ pub struct TrendingQueryParams {
     get,
     path = "/featured",
     tag = "GIFs",
-    security(("User Token" = []), ("Bot Token" = [])),
+    security(("Session-Token" = []), ("Bot-Token" = [])),
     params(TrendingQueryParams),
     responses(
-        (status = 200, description = "Trending results", body = inline(types::PaginatedMediaResponse))
+        (status = 200, description = "Trending results", body = types::PaginatedMediaResponse),
+        (status = "default", body = Error),
     )
 )]
 pub async fn trending(

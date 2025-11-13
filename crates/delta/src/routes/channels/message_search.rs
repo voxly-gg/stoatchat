@@ -11,7 +11,7 @@ use validator::Validate;
 /// # Search for Messages
 ///
 /// This route searches for messages within the given parameters.
-#[openapi(tag = "Messaging")]
+#[utoipa::path(tag = "Messaging")]
 #[post("/<target>/search", data = "<options>")]
 pub async fn search(
     db: &State<Database>,

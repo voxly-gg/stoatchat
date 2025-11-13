@@ -3,11 +3,8 @@ use std::net::{Ipv4Addr, SocketAddr};
 use axum::Router;
 
 use tokio::net::TcpListener;
-use utoipa::{
-    openapi::security::{Http, HttpAuthScheme, SecurityScheme},
-    Modify, OpenApi,
-};
-use utoipa_scalar::{Scalar, Servable as ScalarServable};
+use utoipa::OpenApi;
+use utoipa_scalar::{Scalar, Servable};
 
 mod api;
 pub mod requests;
@@ -21,7 +18,6 @@ async fn main() -> Result<(), std::io::Error> {
     // Configure API schema
     #[derive(OpenApi)]
     #[openapi(
-        modifiers(&SecurityAddon),
         paths(
             api::root,
             api::proxy,
@@ -47,22 +43,17 @@ async fn main() -> Result<(), std::io::Error> {
     )]
     struct ApiDoc;
 
-    struct SecurityAddon;
-
-    impl Modify for SecurityAddon {
-        fn modify(&self, openapi: &mut utoipa::openapi::OpenApi) {
-            if let Some(components) = openapi.components.as_mut() {
-                components.add_security_scheme(
-                    "api_key",
-                    SecurityScheme::Http(Http::new(HttpAuthScheme::Bearer)),
-                )
-            }
-        }
-    }
-
     // Configure Axum and router
     let app = Router::new()
         .merge(Scalar::with_url("/scalar", ApiDoc::openapi()))
+        // .route("/scalar", {
+        //     let html = Scalar::new(ApiDoc::openapi()).to_html();
+
+        //     get(move || {
+        //         let html = html.clone();
+        //         async { Html(html) }
+        //     })
+        // })
         .nest("/", api::router().await);
 
     // Configure TCP listener and bind

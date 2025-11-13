@@ -8,7 +8,7 @@ use rocket::State;
 /// # Accept Friend Request
 ///
 /// Accept another user's friend request.
-#[openapi(tag = "Relationships")]
+#[utoipa::path(tag = "Relationships")]
 #[put("/<target>/friend")]
 pub async fn add(
     db: &State<Database>,

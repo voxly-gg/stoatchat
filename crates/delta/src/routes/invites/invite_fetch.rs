@@ -6,7 +6,7 @@ use rocket::{serde::json::Json, State};
 /// # Fetch Invite
 ///
 /// Fetch an invite by its id.
-#[openapi(tag = "Invites")]
+#[utoipa::path(tag = "Invites")]
 #[get("/<target>")]
 pub async fn fetch(db: &State<Database>, target: Reference<'_>) -> Result<Json<v0::InviteResponse>> {
     Ok(Json(match target.as_invite(db).await? {

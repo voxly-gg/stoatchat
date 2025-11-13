@@ -12,7 +12,7 @@ use validator::Validate;
 /// # Ban User
 ///
 /// Ban a user by their id.
-#[openapi(tag = "Server Members")]
+#[utoipa::path(tag = "Server Members")]
 #[put("/<server>/bans/<target>", data = "<data>")]
 pub async fn ban(
     db: &State<Database>,

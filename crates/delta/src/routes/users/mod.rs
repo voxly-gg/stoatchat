@@ -1,4 +1,3 @@
-use revolt_rocket_okapi::revolt_okapi::openapi3::OpenApi;
 use rocket::Route;
 
 mod add_friend;
@@ -17,8 +16,30 @@ mod remove_friend;
 mod send_friend_request;
 mod unblock_user;
 
-pub fn routes() -> (Vec<Route>, OpenApi) {
-    openapi_get_routes_spec![
+#[derive(OpenApi)]
+#[openapi(
+    paths(
+        fetch_self::fetch,
+        fetch_user::fetch,
+        fetch_user_flags::fetch_user_flags,
+        edit_user::edit,
+        change_username::change_username,
+        get_default_avatar::default_avatar,
+        fetch_profile::profile,
+        fetch_dms::direct_messages,
+        open_dm::open_dm,
+        find_mutual::mutual,
+        add_friend::add,
+        remove_friend::remove,
+        block_user::block,
+        unblock_user::unblock,
+        send_friend_request::send_friend_request,
+    )
+)]
+pub struct ApiDoc;
+
+pub fn routes() -> Vec<Route> {
+    routes![
         // User Information
         fetch_self::fetch,
         fetch_user::fetch,

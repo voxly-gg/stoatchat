@@ -6,7 +6,7 @@ use rocket_empty::EmptyResponse;
 /// # Delete Bot
 ///
 /// Delete a bot by its id.
-#[openapi(tag = "Bots")]
+#[utoipa::path(tag = "Bots")]
 #[delete("/<target>")]
 pub async fn delete_bot(
     db: &State<Database>,

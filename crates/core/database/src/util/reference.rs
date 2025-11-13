@@ -3,10 +3,13 @@ use std::str::FromStr;
 use revolt_result::Result;
 #[cfg(feature = "rocket-impl")]
 use rocket::request::FromParam;
-#[cfg(feature = "rocket-impl")]
-use schemars::{
-    schema::{InstanceType, Schema, SchemaObject, SingleOrVec},
-    JsonSchema,
+#[cfg(feature = "utoipa")]
+use utoipa::{
+    openapi::{
+        path::{Parameter, ParameterBuilder, ParameterIn},
+        Required,
+    },
+    IntoParams,
 };
 
 use crate::{
@@ -113,16 +116,14 @@ impl<'r> FromParam<'r> for Reference<'r> {
     }
 }
 
-#[cfg(feature = "rocket-impl")]
-impl<'a> JsonSchema for Reference<'a> {
-    fn schema_name() -> String {
-        "Id".to_string()
-    }
-
-    fn json_schema(_gen: &mut schemars::gen::SchemaGenerator) -> Schema {
-        Schema::Object(SchemaObject {
-            instance_type: Some(SingleOrVec::Single(Box::new(InstanceType::String))),
-            ..Default::default()
-        })
+#[cfg(feature = "utoipa")]
+impl IntoParams for Reference<'_> {
+    fn into_params(parameter_in_provider: impl Fn() -> Option<ParameterIn>) -> Vec<Parameter> {
+        vec![ParameterBuilder::new()
+            .name("id")
+            .required(Required::True)
+            .description(Some("An ID".to_string()))
+            .parameter_in(parameter_in_provider().unwrap_or_default())
+            .build()]
     }
 }

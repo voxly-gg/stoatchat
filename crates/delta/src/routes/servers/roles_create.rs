@@ -12,7 +12,7 @@ use validator::Validate;
 /// # Create Role
 ///
 /// Creates a new server role.
-#[openapi(tag = "Server Permissions")]
+#[utoipa::path(tag = "Server Permissions")]
 #[post("/<target>/roles", data = "<data>")]
 pub async fn create(
     db: &State<Database>,

@@ -23,9 +23,14 @@ use sha2::Digest;
 use tempfile::NamedTempFile;
 use tokio::time::Instant;
 use tower_http::cors::{AllowHeaders, Any, CorsLayer};
-use utoipa::ToSchema;
+use utoipa::{
+    openapi::{schema::ObjectBuilder, SchemaFormat},
+    PartialSchema, ToSchema,
+};
 
-use crate::{exif::strip_metadata, metadata::generate_metadata, mime_type::determine_mime_type, AppState};
+use crate::{
+    exif::strip_metadata, metadata::generate_metadata, mime_type::determine_mime_type, AppState,
+};
 
 /// Build the API router
 pub async fn router() -> Router<AppState> {
@@ -122,12 +127,30 @@ pub enum Tag {
 }
 
 /// Request body for upload
-#[derive(ToSchema, TryFromMultipart)]
+#[derive(TryFromMultipart)]
 pub struct UploadPayload {
-    #[schema(format = Binary)]
     #[allow(dead_code)]
     #[form_data(limit = "unlimited")] // handled by axum
     file: FieldData<NamedTempFile>,
+}
+
+impl ToSchema for UploadPayload {
+    fn name() -> std::borrow::Cow<'static, str> {
+        std::borrow::Cow::Borrowed("UploadPayload")
+    }
+}
+
+impl PartialSchema for UploadPayload {
+    fn schema() -> utoipa::openapi::RefOr<utoipa::openapi::schema::Schema> {
+        ObjectBuilder::new()
+            .property(
+                "file",
+                ObjectBuilder::new().format(Some(SchemaFormat::KnownFormat(
+                    utoipa::openapi::KnownFormat::Binary,
+                ))),
+            )
+            .into()
+    }
 }
 
 /// Successful upload response
@@ -160,8 +183,8 @@ pub struct UploadResponse {
     ),
     request_body(content_type = "multipart/form-data", content = UploadPayload),
     security(
-        ("session_token" = []),
-        ("bot_token" = [])
+        ("Session-Token" = []),
+        ("Bot-Token" = [])
     )
 )]
 async fn upload_file(

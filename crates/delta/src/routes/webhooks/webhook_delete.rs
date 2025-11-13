@@ -10,7 +10,7 @@ use rocket_empty::EmptyResponse;
 /// # Deletes a webhook
 ///
 /// Deletes a webhook
-#[openapi(tag = "Webhooks")]
+#[utoipa::path(tag = "Webhooks")]
 #[delete("/<webhook_id>")]
 pub async fn webhook_delete(
     db: &State<Database>,

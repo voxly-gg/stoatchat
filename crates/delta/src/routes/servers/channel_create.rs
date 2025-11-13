@@ -11,7 +11,7 @@ use validator::Validate;
 /// # Create Channel
 ///
 /// Create a new Text or Voice channel.
-#[openapi(tag = "Server Information")]
+#[utoipa::path(tag = "Server Information")]
 #[post("/<server>/channels", data = "<data>")]
 pub async fn create_server_channel(
     db: &State<Database>,

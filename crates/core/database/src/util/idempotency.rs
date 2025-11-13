@@ -43,45 +43,45 @@ impl IdempotencyKey {
     }
 }
 
-#[cfg(feature = "rocket-impl")]
-use revolt_rocket_okapi::{
-    gen::OpenApiGenerator,
-    request::{OpenApiFromRequest, RequestHeaderInput},
-    revolt_okapi::openapi3::{Parameter, ParameterValue},
-};
+// #[cfg(feature = "rocket-impl")]
+// use revolt_rocket_okapi::{
+//     gen::OpenApiGenerator,
+//     request::{OpenApiFromRequest, RequestHeaderInput},
+//     revolt_okapi::openapi3::{Parameter, ParameterValue},
+// };
 
-#[cfg(feature = "rocket-impl")]
-use schemars::schema::{InstanceType, SchemaObject, SingleOrVec};
+// #[cfg(feature = "rocket-impl")]
+// use schemars::schema::{InstanceType, SchemaObject, SingleOrVec};
 
-#[cfg(feature = "rocket-impl")]
-impl OpenApiFromRequest<'_> for IdempotencyKey {
-    fn from_request_input(
-        _gen: &mut OpenApiGenerator,
-        _name: String,
-        _required: bool,
-    ) -> revolt_rocket_okapi::Result<RequestHeaderInput> {
-        Ok(RequestHeaderInput::Parameter(Parameter {
-            name: "Idempotency-Key".to_string(),
-            description: Some("Unique key to prevent duplicate requests".to_string()),
-            allow_empty_value: false,
-            required: false,
-            deprecated: false,
-            extensions: schemars::Map::new(),
-            location: "header".to_string(),
-            value: ParameterValue::Schema {
-                allow_reserved: false,
-                example: None,
-                examples: None,
-                explode: None,
-                style: None,
-                schema: SchemaObject {
-                    instance_type: Some(SingleOrVec::Single(Box::new(InstanceType::String))),
-                    ..Default::default()
-                },
-            },
-        }))
-    }
-}
+// #[cfg(feature = "rocket-impl")]
+// impl OpenApiFromRequest<'_> for IdempotencyKey {
+//     fn from_request_input(
+//         _gen: &mut OpenApiGenerator,
+//         _name: String,
+//         _required: bool,
+//     ) -> revolt_rocket_okapi::Result<RequestHeaderInput> {
+//         Ok(RequestHeaderInput::Parameter(Parameter {
+//             name: "Idempotency-Key".to_string(),
+//             description: Some("Unique key to prevent duplicate requests".to_string()),
+//             allow_empty_value: false,
+//             required: false,
+//             deprecated: false,
+//             extensions: schemars::Map::new(),
+//             location: "header".to_string(),
+//             value: ParameterValue::Schema {
+//                 allow_reserved: false,
+//                 example: None,
+//                 examples: None,
+//                 explode: None,
+//                 style: None,
+//                 schema: SchemaObject {
+//                     instance_type: Some(SingleOrVec::Single(Box::new(InstanceType::String))),
+//                     ..Default::default()
+//                 },
+//             },
+//         }))
+//     }
+// }
 
 #[cfg(feature = "rocket-impl")]
 use rocket::{

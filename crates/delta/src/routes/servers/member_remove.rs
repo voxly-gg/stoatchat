@@ -10,7 +10,7 @@ use rocket_empty::EmptyResponse;
 /// # Kick Member
 ///
 /// Removes a member from the server.
-#[openapi(tag = "Server Members")]
+#[utoipa::path(tag = "Server Members")]
 #[delete("/<target>/members/<member>")]
 pub async fn kick(
     db: &State<Database>,

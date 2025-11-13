@@ -3,13 +3,10 @@ use std::net::{Ipv4Addr, SocketAddr};
 use axum::{middleware::from_fn_with_state, Router};
 
 use axum_macros::FromRef;
-use revolt_database::{Database, DatabaseInfo};
+use revolt_database::{Database, DatabaseInfo, User, util::utoipa::TokenSecurity};
 use revolt_ratelimits::axum as ratelimiter;
 use tokio::net::TcpListener;
-use utoipa::{
-    openapi::security::{ApiKey, ApiKeyValue, SecurityScheme},
-    Modify, OpenApi,
-};
+use utoipa::OpenApi;
 use utoipa_scalar::{Scalar, Servable as ScalarServable};
 
 mod api;
@@ -36,7 +33,7 @@ async fn main() -> Result<(), std::io::Error> {
     // Configure API schema
     #[derive(OpenApi)]
     #[openapi(
-        modifiers(&SecurityAddon),
+        modifiers(&TokenSecurity),
         paths(
             api::root,
             api::upload_file,
@@ -58,23 +55,6 @@ async fn main() -> Result<(), std::io::Error> {
         )
     )]
     struct ApiDoc;
-
-    struct SecurityAddon;
-
-    impl Modify for SecurityAddon {
-        fn modify(&self, openapi: &mut utoipa::openapi::OpenApi) {
-            if let Some(components) = openapi.components.as_mut() {
-                components.add_security_scheme(
-                    "bot_token",
-                    SecurityScheme::ApiKey(ApiKey::Header(ApiKeyValue::new("X-Bot-Token"))),
-                );
-                components.add_security_scheme(
-                    "session_token",
-                    SecurityScheme::ApiKey(ApiKey::Header(ApiKeyValue::new("X-Session-Token"))),
-                );
-            }
-        }
-    }
 
     // Connect to the database
     let db = DatabaseInfo::Auto.connect().await.unwrap();

@@ -46,7 +46,7 @@ auto_derived!(
     #[cfg_attr(feature = "validator", derive(Validate))]
     pub struct DataCreateEmoji {
         /// Server name
-        #[validate(length(min = 1, max = 32), regex = "RE_EMOJI")]
+        #[cfg_attr(feature = "validator", validate(length(min = 1, max = 32), regex = "RE_EMOJI"))]
         pub name: String,
         /// Parent information
         pub parent: EmojiParent,

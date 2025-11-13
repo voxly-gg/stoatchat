@@ -15,7 +15,7 @@ use validator::Validate;
 pub static RE_USERNAME: Lazy<Regex> = Lazy::new(|| Regex::new(r"^(\p{L}|[\d_.-])+$").unwrap());
 
 /// # Username Information
-#[derive(Validate, Serialize, Deserialize, JsonSchema)]
+#[derive(Validate, Serialize, Deserialize, ToSchema)]
 pub struct DataChangeUsername {
     /// New username
     #[validate(length(min = 2, max = 32), regex = "RE_USERNAME")]
@@ -28,7 +28,7 @@ pub struct DataChangeUsername {
 /// # Change Username
 ///
 /// Change your username.
-#[openapi(tag = "User Information")]
+#[utoipa::path(tag = "User Information")]
 #[patch("/@me/username", data = "<data>")]
 pub async fn change_username(
     db: &State<Database>,

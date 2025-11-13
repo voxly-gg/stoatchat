@@ -11,7 +11,7 @@ use validator::Validate;
 /// # Edit Channel
 ///
 /// Edit a channel object by its id.
-#[openapi(tag = "Channel Information")]
+#[utoipa::path(tag = "Channel Information")]
 #[patch("/<target>", data = "<data>")]
 pub async fn edit(
     db: &State<Database>,

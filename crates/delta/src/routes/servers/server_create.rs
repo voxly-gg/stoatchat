@@ -9,7 +9,7 @@ use validator::Validate;
 /// # Create Server
 ///
 /// Create a new server.
-#[openapi(tag = "Server Information")]
+#[utoipa::path(tag = "Server Information")]
 #[post("/create", data = "<data>")]
 pub async fn create_server(
     db: &State<Database>,

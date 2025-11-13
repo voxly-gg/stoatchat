@@ -12,7 +12,7 @@ use rocket::{serde::json::Json, State};
 /// Sets permissions for the specified role in this channel.
 ///
 /// Channel must be a `TextChannel` or `VoiceChannel`.
-#[openapi(tag = "Channel Permissions")]
+#[utoipa::path(tag = "Channel Permissions")]
 #[put("/<target>/permissions/<role_id>", data = "<data>", rank = 2)]
 pub async fn set_role_permissions(
     db: &State<Database>,

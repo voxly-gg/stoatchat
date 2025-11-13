@@ -11,9 +11,13 @@ use rocket::{serde::json::Json, State};
 /// # Fetch User
 ///
 /// Retrieve a user's information.
-#[openapi(tag = "User Information")]
+#[utoipa::path(tag = "User Information")]
 #[get("/<target>")]
-pub async fn fetch(db: &State<Database>, user: User, target: Reference<'_>) -> Result<Json<v0::User>> {
+pub async fn fetch(
+    db: &State<Database>,
+    user: User,
+    target: Reference<'_>,
+) -> Result<Json<v0::User>> {
     if user.id == target.id {
         return Ok(Json(user.into_self(false).await));
     }

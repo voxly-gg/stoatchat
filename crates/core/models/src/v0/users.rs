@@ -141,7 +141,7 @@ auto_derived!(
     #[cfg_attr(feature = "validator", derive(Validate))]
     pub struct UserStatus {
         /// Custom status text
-        #[validate(length(min = 0, max = 128))]
+        #[cfg_attr(feature = "validator", validate(length(min = 0, max = 128)))]
         #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
         pub text: Option<String>,
         /// Current presence option
@@ -154,7 +154,7 @@ auto_derived!(
     #[cfg_attr(feature = "validator", derive(Validate))]
     pub struct UserProfile {
         /// Text content on user's profile
-        #[validate(length(min = 0, max = 2000))]
+        #[cfg_attr(feature = "validator", validate(length(min = 0, max = 2000)))]
         #[cfg_attr(feature = "serde", serde(skip_serializing_if = "Option::is_none"))]
         pub content: Option<String>,
         /// Background visible on user's profile

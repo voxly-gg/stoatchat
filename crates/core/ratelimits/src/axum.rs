@@ -1,6 +1,5 @@
 use std::net::SocketAddr;
 
-use async_trait::async_trait;
 use axum::{
     Json, RequestPartsExt, Router,
     body::Body,
@@ -44,7 +43,6 @@ async fn to_real_ip(parts: &Parts) -> String {
     }
 }
 
-#[async_trait]
 impl<S: Send + Sync> FromRequestParts<S> for Ratelimiter
 where
     Database: FromRef<S>,
@@ -82,7 +80,6 @@ where
     }
 }
 
-#[async_trait]
 impl<S: Send + Sync> FromRequestParts<S> for RatelimitInformation
 where
     Database: FromRef<S>,

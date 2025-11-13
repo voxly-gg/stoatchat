@@ -1,16 +1,15 @@
 use std::net::{Ipv4Addr, SocketAddr};
 
-use axum::{extract::FromRef, middleware::from_fn_with_state, Router};
+use axum::{
+    extract::FromRef, middleware::from_fn_with_state, Router,
+};
 
 use revolt_config::config;
-use revolt_database::{Database, DatabaseInfo};
+use revolt_database::{Database, DatabaseInfo, util::utoipa::TokenSecurity};
 use revolt_ratelimits::axum as ratelimiter;
 use tokio::net::TcpListener;
-use utoipa::{
-    openapi::security::{ApiKey, ApiKeyValue, SecurityScheme},
-    Modify, OpenApi,
-};
-use utoipa_scalar::{Scalar, Servable as ScalarServable};
+use utoipa::OpenApi;
+use utoipa_scalar::{Scalar, Servable};
 
 use crate::tenor::Tenor;
 
@@ -26,26 +25,6 @@ struct AppState {
     pub ratelimit_storage: ratelimiter::RatelimitStorage,
 }
 
-struct SecurityAddon;
-
-impl Modify for SecurityAddon {
-    fn modify(&self, openapi: &mut utoipa::openapi::OpenApi) {
-        let components = openapi.components.get_or_insert_default();
-
-        components.add_security_scheme(
-            "User Token",
-            SecurityScheme::ApiKey(ApiKey::Header(ApiKeyValue::new(
-                "X-Session-Token".to_string(),
-            ))),
-        );
-
-        components.add_security_scheme(
-            "Bot Token",
-            SecurityScheme::ApiKey(ApiKey::Header(ApiKeyValue::new("X-Bot-Token".to_string()))),
-        );
-    }
-}
-
 #[tokio::main]
 async fn main() -> Result<(), std::io::Error> {
     // Configure logging and environment
@@ -54,7 +33,7 @@ async fn main() -> Result<(), std::io::Error> {
     // Configure API schema
     #[derive(OpenApi)]
     #[openapi(
-        modifiers(&SecurityAddon),
+        modifiers(&TokenSecurity),
         paths(
             routes::categories::categories,
             routes::root::root,

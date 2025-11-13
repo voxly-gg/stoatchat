@@ -8,7 +8,7 @@ use rocket::State;
 /// # Unsubscribe
 ///
 /// Remove the Web Push subscription associated with the current session.
-#[openapi(tag = "Web Push")]
+#[utoipa::path(tag = "Web Push")]
 #[post("/unsubscribe")]
 pub async fn unsubscribe(
     authifier: &State<Authifier>,

@@ -14,7 +14,7 @@ use validator::Validate;
 /// # Edit Member
 ///
 /// Edit a member by their id.
-#[openapi(tag = "Server Members")]
+#[utoipa::path(tag = "Server Members")]
 #[patch("/<server>/members/<member>", data = "<data>")]
 pub async fn edit(
     db: &State<Database>,

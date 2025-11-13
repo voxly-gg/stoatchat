@@ -10,7 +10,7 @@ use rocket_empty::EmptyResponse;
 /// # Delete Message
 ///
 /// Delete a message you've sent or one you have permission to delete.
-#[openapi(tag = "Messaging")]
+#[utoipa::path(tag = "Messaging")]
 #[delete("/<target>/messages/<msg>", rank = 2)]
 pub async fn delete(
     db: &State<Database>,
