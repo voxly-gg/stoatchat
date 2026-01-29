@@ -1,9 +1,10 @@
 [package]
 name = "revolt-delta"
-version = "0.8.8"
+version = "0.10.2"
 license = "AGPL-3.0-or-later"
 authors = ["Paul Makles <paulmakles@gmail.com>"]
 edition = "2018"
+publish = false
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 

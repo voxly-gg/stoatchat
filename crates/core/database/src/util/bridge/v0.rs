@@ -691,6 +691,7 @@ impl From<crate::FieldsMember> for FieldsMember {
             crate::FieldsMember::CanReceive => FieldsMember::CanReceive,
             crate::FieldsMember::CanPublish => FieldsMember::CanPublish,
             crate::FieldsMember::JoinedAt => FieldsMember::JoinedAt,
+            crate::FieldsMember::VoiceChannel => FieldsMember::VoiceChannel,
         }
     }
 }
@@ -705,6 +706,7 @@ impl From<FieldsMember> for crate::FieldsMember {
             FieldsMember::CanReceive => crate::FieldsMember::CanReceive,
             FieldsMember::CanPublish => crate::FieldsMember::CanPublish,
             FieldsMember::JoinedAt => crate::FieldsMember::JoinedAt,
+            FieldsMember::VoiceChannel => crate::FieldsMember::VoiceChannel,
         }
     }
 }
@@ -896,6 +898,7 @@ impl From<SystemMessageChannels> for crate::SystemMessageChannels {
 impl From<crate::Role> for Role {
     fn from(value: crate::Role) -> Self {
         Role {
+            id: value.id,
             name: value.name,
             permissions: value.permissions,
             colour: value.colour,
@@ -908,6 +911,7 @@ impl From<crate::Role> for Role {
 impl From<Role> for crate::Role {
     fn from(value: Role) -> crate::Role {
         crate::Role {
+            id: value.id,
             name: value.name,
             permissions: value.permissions,
             colour: value.colour,
@@ -920,6 +924,7 @@ impl From<Role> for crate::Role {
 impl From<crate::PartialRole> for PartialRole {
     fn from(value: crate::PartialRole) -> Self {
         PartialRole {
+            id: value.id,
             name: value.name,
             permissions: value.permissions,
             colour: value.colour,
@@ -932,6 +937,7 @@ impl From<crate::PartialRole> for PartialRole {
 impl From<PartialRole> for crate::PartialRole {
     fn from(value: PartialRole) -> crate::PartialRole {
         crate::PartialRole {
+            id: value.id,
             name: value.name,
             permissions: value.permissions,
             colour: value.colour,

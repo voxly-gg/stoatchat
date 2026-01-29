@@ -64,7 +64,7 @@ pub async fn edit(
             .map(Into::into)
             .collect::<Vec<FieldsRole>>();
 
-        role.update(db, &server.id, &role_id, partial.clone(), remove.clone())
+        role.update(db, &server.id, partial.clone(), remove.clone())
             .await?;
 
         AuditLogEntryAction::RoleEdit {

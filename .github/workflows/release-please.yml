@@ -20,6 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       release_created: ${{ steps.rp.outputs.release_created }}
+      tag_name: ${{ steps.rp.outputs.tag_name }}
     steps:
       - id: app-token
         uses: actions/create-github-app-token@v2
@@ -32,18 +33,30 @@ jobs:
           token: ${{ steps.app-token.outputs.token }}
           config-file: release-please-config.json
 
-  publish-stable:
-    name: Publish release to stable branch
-    needs: release-please
-    if: needs.release-please.outputs.release_created == 'true'
-    runs-on: ubuntu-latest
-    
-    steps:
-      - id: app-token
-        uses: actions/create-github-app-token@v2
+      - name: Install latest stable
+        uses: dtolnay/rust-toolchain@e97e2d8cc328f1b50210efc529dca0028893a2d9 # v1
         with:
-          app-id: ${{ secrets.GH_STOAT_RELEASE_APP_ID }}
-          private-key: ${{ secrets.GH_STOAT_RELEASE_APP_PRIVATE_KEY }}
-      - uses: katyo/publish-crates@v2
+          toolchain: stable
+
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
         with:
-          registry-token: ${{ secrets.CRATES_IO_PUBLISH_TOKEN }}
+          token: ${{ steps.app-token.outputs.token }}
+      - name: Update Cargo.lock
+        if: ${{ steps.rp.outputs.prs_created == 'true' || steps.rp.outputs.prs_updated == 'true' }}
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+        run: |
+          PR_NUMBER=$(echo '${{ steps.rp.outputs.prs }}' | jq -r '.[0].number')
+          gh pr checkout "$PR_NUMBER"
+          
+          cargo update -w
+          
+          if git diff --quiet Cargo.lock; then
+            echo "No changes to Cargo.lock"
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add Cargo.lock
+            git commit -s -m "chore: update Cargo.lock"
+            git push
+          fi

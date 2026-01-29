@@ -40,7 +40,7 @@ pub async fn delete(
         return Err(create_error!(NotElevated));
     }
 
-    role.delete(db, &server.id, &role_id).await?;
+    role.delete(db, &server.id).await?;
 
     AuditLogEntryAction::RoleDelete {
         role: role_id.clone(),

@@ -7,19 +7,20 @@ on:
   pull_request:
     paths:
       - "Dockerfile"
+  workflow_dispatch:
 
 permissions:
   contents: read
   packages: write
 
-concurrency: 
-  group: ${{ github.head_ref }}
+concurrency:
+  group: ${{ github.head_ref || github.ref }}
   cancel-in-progress: true
 
 jobs:
   base:
     name: Test base image build
-    runs-on: ubuntu-latest
+    runs-on: arc-runner-set
     if: github.event_name == 'pull_request'
     steps:
       # Configure build environment
@@ -40,7 +41,7 @@ jobs:
           cache-to: type=gha,scope=buildx-base-multi-arch,mode=max
 
   publish:
-    runs-on: self-hosted
+    runs-on: arc-runner-set
     if: github.event_name != 'pull_request'
     name: Publish Docker images
     steps:
