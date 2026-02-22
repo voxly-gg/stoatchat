@@ -4683,7 +4683,7 @@ dependencies = [
  "base64 0.21.7",
  "http 1.4.0",
  "jsonwebtoken",
- "livekit-protocol 0.7.1",
+ "livekit-protocol",
  "log",
  "parking_lot",
  "pbjson-types",
@@ -4696,24 +4696,6 @@ dependencies = [
  "sha2",
  "thiserror 1.0.69",
  "url",
-]
-
-[[package]]
-name = "livekit-protocol"
-version = "0.4.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "45c90494efa508ec40228f870affec648826d23e1a9621a4430f67d187901eb4"
-dependencies = [
- "futures-util",
- "livekit-runtime 0.4.0",
- "parking_lot",
- "pbjson",
- "pbjson-types",
- "prost",
- "prost-types",
- "serde",
- "thiserror 1.0.69",
- "tokio 1.49.0",
 ]
 
 [[package]]
@@ -9553,7 +9535,7 @@ dependencies = [
  "iso8601-timestamp",
  "linkify 0.8.1",
  "livekit-api",
- "livekit-protocol 0.4.0",
+ "livekit-protocol",
  "livekit-runtime 0.3.1",
  "log",
  "lru 0.11.1",
@@ -9600,7 +9582,7 @@ dependencies = [
  "lettre",
  "linkify 0.6.0",
  "livekit-api",
- "livekit-protocol 0.4.0",
+ "livekit-protocol",
  "log",
  "lru 0.7.8",
  "nanoid",
@@ -9834,7 +9816,7 @@ dependencies = [
  "chrono",
  "futures",
  "livekit-api",
- "livekit-protocol 0.4.0",
+ "livekit-protocol",
  "livekit-runtime 0.3.1",
  "log",
  "lru 0.7.8",
