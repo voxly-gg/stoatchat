@@ -1,4 +1,4 @@
-use voxly_rocket_okapi::voxly_okapi::openapi3::OpenApi;
+use revolt_rocket_okapi::revolt_okapi::openapi3::OpenApi;
 use rocket::Route;
 
 mod complete;

@@ -1,5 +1,5 @@
 use voxly_config::Settings;
-use voxly_rocket_okapi::{voxly_okapi::openapi3::OpenApi, settings::OpenApiSettings};
+use revolt_rocket_okapi::{revolt_okapi::openapi3::OpenApi, settings::OpenApiSettings};
 pub use rocket::http::Status;
 pub use rocket::response::Redirect;
 use rocket::{Build, Rocket};
@@ -109,7 +109,7 @@ pub fn mount(config: Settings, mut rocket: Rocket<Build>) -> Rocket<Build> {
 }
 
 fn custom_openapi_spec() -> OpenApi {
-    use voxly_rocket_okapi::voxly_okapi::openapi3::*;
+    use revolt_rocket_okapi::revolt_okapi::openapi3::*;
 
     let mut extensions = schemars::Map::new();
     extensions.insert(

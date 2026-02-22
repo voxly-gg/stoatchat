@@ -44,10 +44,10 @@ impl IdempotencyKey {
 }
 
 #[cfg(feature = "rocket-impl")]
-use voxly_rocket_okapi::{
+use revolt_rocket_okapi::{
     gen::OpenApiGenerator,
     request::{OpenApiFromRequest, RequestHeaderInput},
-    voxly_okapi::openapi3::{Parameter, ParameterValue},
+    revolt_okapi::openapi3::{Parameter, ParameterValue},
 };
 
 #[cfg(feature = "rocket-impl")]
@@ -59,7 +59,7 @@ impl OpenApiFromRequest<'_> for IdempotencyKey {
         _gen: &mut OpenApiGenerator,
         _name: String,
         _required: bool,
-    ) -> voxly_rocket_okapi::Result<RequestHeaderInput> {
+    ) -> revolt_rocket_okapi::Result<RequestHeaderInput> {
         Ok(RequestHeaderInput::Parameter(Parameter {
             name: "Idempotency-Key".to_string(),
             description: Some("Unique key to prevent duplicate requests".to_string()),

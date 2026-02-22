@@ -1,10 +1,10 @@
 use voxly_database::{util::reference::Reference, Database, Message, AMQP};
 use voxly_models::v0::{MessageAuthor, SendableEmbed, Webhook};
 use voxly_result::{create_error, Error, Result};
-use voxly_rocket_okapi::{
+use revolt_rocket_okapi::{
     gen::OpenApiGenerator,
     request::{OpenApiFromRequest, RequestHeaderInput},
-    voxly_okapi::openapi3::{MediaType, Parameter, ParameterValue},
+    revolt_okapi::openapi3::{MediaType, Parameter, ParameterValue},
 };
 use rocket::{http::Status, request::FromRequest, Request, State};
 use schemars::schema::SchemaObject;
@@ -650,7 +650,7 @@ impl<'r> OpenApiFromRequest<'r> for EventHeader<'r> {
         _gen: &mut OpenApiGenerator,
         _name: String,
         _required: bool,
-    ) -> voxly_rocket_okapi::Result<RequestHeaderInput> {
+    ) -> revolt_rocket_okapi::Result<RequestHeaderInput> {
         let mut content = schemars::Map::new();
         content.insert(
             "X-Github-Event".to_string(),

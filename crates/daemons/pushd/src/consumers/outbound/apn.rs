@@ -7,7 +7,7 @@ use base64::{
     engine::{self},
     Engine as _,
 };
-use voxly_a2::{
+use revolt_a2::{
     request::{
         notification::{DefaultAlert, NotificationOptions},
         payload::{APSAlert, APSSound, Payload, PayloadLike, APS},

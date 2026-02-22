@@ -1,7 +1,7 @@
 #[macro_use]
 extern crate rocket;
 #[macro_use]
-extern crate voxly_rocket_okapi;
+extern crate revolt_rocket_okapi;
 #[macro_use]
 extern crate serde_json;
 
@@ -85,24 +85,24 @@ pub async fn web() -> Rocket<Build> {
     .expect("Failed to create CORS.");
 
     // Configure Swagger
-    let swagger = voxly_rocket_okapi::swagger_ui::make_swagger_ui(
-        &voxly_rocket_okapi::swagger_ui::SwaggerUIConfig {
+    let swagger = revolt_rocket_okapi::swagger_ui::make_swagger_ui(
+        &revolt_rocket_okapi::swagger_ui::SwaggerUIConfig {
             url: "/openapi.json".to_owned(),
             ..Default::default()
         },
     )
     .into();
 
-    let swagger_0_8 = voxly_rocket_okapi::swagger_ui::make_swagger_ui(
-        &voxly_rocket_okapi::swagger_ui::SwaggerUIConfig {
+    let swagger_0_8 = revolt_rocket_okapi::swagger_ui::make_swagger_ui(
+        &revolt_rocket_okapi::swagger_ui::SwaggerUIConfig {
             url: "/0.8/openapi.json".to_owned(),
             ..Default::default()
         },
     )
     .into();
 
-    let swagger_0_8 = voxly_rocket_okapi::swagger_ui::make_swagger_ui(
-        &voxly_rocket_okapi::swagger_ui::SwaggerUIConfig {
+    let swagger_0_8 = revolt_rocket_okapi::swagger_ui::make_swagger_ui(
+        &revolt_rocket_okapi::swagger_ui::SwaggerUIConfig {
             url: "/0.8/openapi.json".to_owned(),
             ..Default::default()
         },

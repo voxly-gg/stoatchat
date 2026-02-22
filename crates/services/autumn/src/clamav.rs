@@ -12,7 +12,7 @@ pub async fn init() {
 
         loop {
             let clamd_available =
-                match voxly_clamav_client::ping_tcp(config.files.clamd_host.clone()) {
+                match revolt_clamav_client::ping_tcp(config.files.clamd_host.clone()) {
                     Ok(ping_response) => ping_response == b"PONG\0",
                     Err(_) => false,
                 };
@@ -38,12 +38,12 @@ pub async fn is_malware(buf: &[u8]) -> Result<bool> {
     if config.files.clamd_host.is_empty() {
         Ok(false)
     } else {
-        let scan_response = report_internal_error!(voxly_clamav_client::scan_buffer_tcp(
+        let scan_response = report_internal_error!(revolt_clamav_client::scan_buffer_tcp(
             buf,
             config.files.clamd_host,
             None
         ))?;
 
-        report_internal_error!(voxly_clamav_client::clean(&scan_response)).map(|v| !v)
+        report_internal_error!(revolt_clamav_client::clean(&scan_response)).map(|v| !v)
     }
 }

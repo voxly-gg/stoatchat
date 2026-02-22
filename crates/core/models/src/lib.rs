@@ -12,7 +12,7 @@ extern crate utoipa;
 
 #[cfg(feature = "partials")]
 #[macro_use]
-extern crate voxly_optional_struct;
+extern crate revolt_optional_struct;
 
 #[cfg(feature = "validator")]
 pub use validator;
