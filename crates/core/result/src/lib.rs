@@ -222,12 +222,12 @@ macro_rules! query {
     };
 }
 
-pub trait ToRevoltError<T> {
+pub trait ToVoxlyError<T> {
     #[track_caller]
     fn to_internal_error(self) -> Result<T, Error>;
 }
 
-impl<T, E: std::fmt::Debug + std::error::Error> ToRevoltError<T> for Result<T, E> {
+impl<T, E: std::fmt::Debug + std::error::Error> ToVoxlyError<T> for Result<T, E> {
     #[track_caller]
     fn to_internal_error(self) -> Result<T, Error> {
         let loc = Location::caller();
@@ -246,7 +246,7 @@ impl<T, E: std::fmt::Debug + std::error::Error> ToRevoltError<T> for Result<T, E
     }
 }
 
-impl<T> ToRevoltError<T> for Option<T> {
+impl<T> ToVoxlyError<T> for Option<T> {
     #[track_caller]
     fn to_internal_error(self) -> Result<T, Error> {
         let loc = Location::caller();

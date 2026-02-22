@@ -15,7 +15,7 @@ use bson::{oid::ObjectId, to_bson};
 use futures::StreamExt;
 use iso8601_timestamp::Timestamp;
 use rand::seq::SliceRandom;
-use revolt_permissions::{ChannelPermission, DEFAULT_WEBHOOK_PERMISSIONS};
+use voxly_permissions::{ChannelPermission, DEFAULT_WEBHOOK_PERMISSIONS};
 use serde::{Deserialize, Serialize};
 use unicode_segmentation::UnicodeSegmentation;
 

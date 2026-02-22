@@ -11,10 +11,10 @@ extern crate async_trait;
 extern crate log;
 
 #[macro_use]
-extern crate revolt_optional_struct;
+extern crate voxly_optional_struct;
 
 #[macro_use]
-extern crate revolt_result;
+extern crate voxly_result;
 
 pub use iso8601_timestamp;
 
@@ -42,7 +42,7 @@ macro_rules! query {
     ( $self: ident, $type: ident, $collection: expr, $($rest:expr),+ ) => {
         $self.$type($collection, $($rest),+).await
             .map_err(|err| {
-                revolt_config::capture_internal_error!(err);
+                voxly_config::capture_internal_error!(err);
                 create_database_error!(stringify!($type), $collection)
             })
     };

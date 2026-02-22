@@ -1,5 +1,5 @@
 [package]
-name = "revolt-voice-ingress"
+name = "voxly-voice-ingress"
 version = "0.11.5"
 license = "AGPL-3.0-or-later"
 edition = "2021"
@@ -34,11 +34,11 @@ async-std = { version = "1.8.0", features = [
 ] }
 
 # Core
-revolt-result = { path = "../../core/result" }
-revolt-models = { path = "../../core/models" }
-revolt-config = { path = "../../core/config" }
-revolt-database = { path = "../../core/database", features = ["voice"] }
-revolt-permissions = { path = "../../core/permissions" }
+voxly-result = { path = "../../core/result" }
+voxly-models = { path = "../../core/models" }
+voxly-config = { path = "../../core/config" }
+voxly-database = { path = "../../core/database", features = ["voice"] }
+voxly-permissions = { path = "../../core/permissions" }
 
 # Voice
 livekit-api = "0.4.4"

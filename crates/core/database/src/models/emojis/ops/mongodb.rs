@@ -1,5 +1,5 @@
 use bson::Document;
-use revolt_result::Result;
+use voxly_result::Result;
 
 use crate::Emoji;
 use crate::MongoDb;

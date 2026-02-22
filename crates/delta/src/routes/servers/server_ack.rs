@@ -1,9 +1,9 @@
-use revolt_database::{
+use voxly_database::{
     util::{permissions::DatabasePermissionQuery, reference::Reference},
     Database, User,
 };
-use revolt_permissions::PermissionQuery;
-use revolt_result::{create_error, Result};
+use voxly_permissions::PermissionQuery;
+use voxly_result::{create_error, Result};
 use rocket::State;
 use rocket_empty::EmptyResponse;
 

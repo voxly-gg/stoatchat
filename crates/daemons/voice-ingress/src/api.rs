@@ -1,6 +1,6 @@
 use livekit_api::{access_token::TokenVerifier, webhooks::WebhookReceiver};
 use livekit_protocol::TrackType;
-use revolt_database::{
+use voxly_database::{
     events::client::EventV1,
     iso8601_timestamp::{Duration, Timestamp},
     util::reference::Reference,
@@ -11,7 +11,7 @@ use revolt_database::{
     },
     Database, AMQP,
 };
-use revolt_result::{Result, ToRevoltError};
+use voxly_result::{Result, ToVoxlyError};
 use rocket::{post, State};
 use rocket_empty::EmptyResponse;
 
@@ -28,7 +28,7 @@ pub async fn ingress(
 ) -> Result<EmptyResponse> {
     log::debug!("received event: {body:?}");
 
-    let config = revolt_config::config().await;
+    let config = voxly_config::config().await;
 
     let node_info = config
         .api
@@ -37,7 +37,7 @@ pub async fn ingress(
         .get(node)
         .to_internal_error()
         .inspect_err(|_| {
-            log::error!("Unknown node {node}, make sure livekit has the correct node name set and matches `hosts.livekit` and `api.livekit.nodes` in the Revolt config.")
+            log::error!("Unknown node {node}, make sure livekit has the correct node name set and matches `hosts.livekit` and `api.livekit.nodes` in the Voxly config.")
         })?;
 
     let webhook_receiver = WebhookReceiver::new(TokenVerifier::with_api_key(
@@ -128,7 +128,7 @@ pub async fn ingress(
             //         .dm_call_updated(&user.id, channel.id(), Some(&now), false, recipients)
             //         .await
             //     {
-            //         revolt_config::capture_error(&e);
+            //         voxly_config::capture_error(&e);
             //     }
             // }
         }
@@ -165,7 +165,7 @@ pub async fn ingress(
             //         .dm_call_updated(user_id, channel_id, None, true, None)
             //         .await
             //     {
-            //         revolt_config::capture_internal_error!(&e);
+            //         voxly_config::capture_internal_error!(&e);
             //     }
 
             //     if let Some(system_message_id) =

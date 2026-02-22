@@ -10,8 +10,8 @@ use axum::{
     response::{IntoResponse, Response},
     routing::get,
 };
-use revolt_database::{Database, User};
-use revolt_config::config;
+use voxly_database::{Database, User};
+use voxly_config::config;
 
 use crate::ratelimiter::{RatelimitInformation, Ratelimiter, RequestKind};
 

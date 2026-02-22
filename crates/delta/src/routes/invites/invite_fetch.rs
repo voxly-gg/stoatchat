@@ -1,6 +1,6 @@
-use revolt_database::{util::reference::Reference, Channel, Database, Invite};
-use revolt_models::v0;
-use revolt_result::Result;
+use voxly_database::{util::reference::Reference, Channel, Database, Invite};
+use voxly_models::v0;
+use voxly_result::Result;
 use rocket::{serde::json::Json, State};
 
 /// # Fetch Invite
@@ -73,8 +73,8 @@ pub async fn fetch(db: &State<Database>, target: Reference<'_>) -> Result<Json<v
 #[cfg(test)]
 mod test {
     use crate::{rocket, util::test::TestHarness};
-    use revolt_database::{Channel, Server};
-    use revolt_models::v0::{
+    use voxly_database::{Channel, Server};
+    use voxly_models::v0::{
         DataCreateGroup, DataCreateServerChannel, Invite, InviteResponse, LegacyServerChannelType,
     };
     use rocket::http::Status;

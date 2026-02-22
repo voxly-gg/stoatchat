@@ -1,5 +1,5 @@
 use axum::http::request::Parts;
-use revolt_ratelimits::ratelimiter::RatelimitResolver;
+use voxly_ratelimits::ratelimiter::RatelimitResolver;
 
 pub struct GifboxRatelimits;
 

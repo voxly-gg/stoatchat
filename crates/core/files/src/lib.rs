@@ -7,8 +7,8 @@ pub use repositories::*;
 use std::io::{BufRead, Read, Seek};
 
 use image::DynamicImage;
-use revolt_config::{report_internal_error, Files, FilesLimit, FilesS3};
-use revolt_result::Result;
+use voxly_config::{report_internal_error, Files, FilesLimit, FilesS3};
+use voxly_result::Result;
 
 use tempfile::NamedTempFile;
 

@@ -111,15 +111,15 @@ confidence-threshold = 0.8
 # aren't accepted for every possible crate as with the normal allow list
 exceptions = [
     # Each entry is the crate and version constraint, and its specific allow
-    { allow = ["AGPL-3.0"], crate = "revolt-database" },
-    { allow = ["AGPL-3.0"], crate = "revolt-presence" },
-    { allow = ["AGPL-3.0"], crate = "revolt-files" },
-    { allow = ["AGPL-3.0"], crate = "revolt-pushd" },
-    { allow = ["AGPL-3.0"], crate = "revolt-crond" },
-    { allow = ["AGPL-3.0"], crate = "revolt-delta" },
-    { allow = ["AGPL-3.0"], crate = "revolt-bonfire" },
-    { allow = ["AGPL-3.0"], crate = "revolt-autumn" },
-    { allow = ["AGPL-3.0"], crate = "revolt-january" },
+    { allow = ["AGPL-3.0"], crate = "voxly-database" },
+    { allow = ["AGPL-3.0"], crate = "voxly-presence" },
+    { allow = ["AGPL-3.0"], crate = "voxly-files" },
+    { allow = ["AGPL-3.0"], crate = "voxly-pushd" },
+    { allow = ["AGPL-3.0"], crate = "voxly-crond" },
+    { allow = ["AGPL-3.0"], crate = "voxly-delta" },
+    { allow = ["AGPL-3.0"], crate = "voxly-bonfire" },
+    { allow = ["AGPL-3.0"], crate = "voxly-autumn" },
+    { allow = ["AGPL-3.0"], crate = "voxly-january" },
 ]
 
 # Some crates don't have (easily) machine readable licensing information,

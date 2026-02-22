@@ -1,8 +1,8 @@
-use revolt_config::config;
-use revolt_database::{util::permissions::DatabasePermissionQuery, Database, Emoji, File, User};
-use revolt_models::v0;
-use revolt_permissions::{calculate_server_permissions, ChannelPermission};
-use revolt_result::{create_error, Result};
+use voxly_config::config;
+use voxly_database::{util::permissions::DatabasePermissionQuery, Database, Emoji, File, User};
+use voxly_models::v0;
+use voxly_permissions::{calculate_server_permissions, ChannelPermission};
+use voxly_result::{create_error, Result};
 use validator::Validate;
 
 use rocket::{serde::json::Json, State};

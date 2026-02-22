@@ -1,4 +1,4 @@
-use revolt_database::{
+use voxly_database::{
     util::reference::Reference,
     voice::{
         delete_voice_channel, get_user_voice_channel_in_server, remove_user_from_voice_channel,
@@ -6,8 +6,8 @@ use revolt_database::{
     },
     Database, RemovalIntention, User,
 };
-use revolt_models::v0;
-use revolt_result::Result;
+use voxly_models::v0;
+use voxly_result::Result;
 use rocket::State;
 
 use rocket_empty::EmptyResponse;

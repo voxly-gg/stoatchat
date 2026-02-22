@@ -10,7 +10,7 @@ use amqprs::{
 use anyhow::Result;
 use async_trait::async_trait;
 use log::debug;
-use revolt_database::{events::rabbit::*, Database};
+use voxly_database::{events::rabbit::*, Database};
 
 pub struct FRAcceptedConsumer {
     #[allow(dead_code)]
@@ -69,7 +69,7 @@ impl FRAcceptedConsumer {
         debug!("Received FR accept event");
 
         if let Ok(sessions) = self.authifier_db.find_sessions(&payload.user).await {
-            let config = revolt_config::config().await;
+            let config = voxly_config::config().await;
             for session in sessions {
                 if let Some(sub) = session.subscription {
                     let mut sendable = PayloadToService {
@@ -133,7 +133,7 @@ impl AsyncConsumer for FRAcceptedConsumer {
             .consume_event(channel, deliver, basic_properties, content)
             .await
         {
-            revolt_config::capture_anyhow(&err);
+            voxly_config::capture_anyhow(&err);
             eprintln!("Failed to process friend request accepted event: {err:?}");
         }
     }

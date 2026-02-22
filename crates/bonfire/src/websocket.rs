@@ -14,20 +14,20 @@ use futures::{
     FutureExt, SinkExt, StreamExt, TryStreamExt,
 };
 use redis_kiss::{PayloadType, REDIS_PAYLOAD_TYPE, REDIS_URI};
-use revolt_config::report_internal_error;
-use revolt_database::{
+use voxly_config::report_internal_error;
+use voxly_database::{
     events::{client::EventV1, server::ClientMessage},
     iso8601_timestamp::Timestamp,
     Database, User, UserHint,
 };
-use revolt_presence::{create_session, delete_session};
+use voxly_presence::{create_session, delete_session};
 
 use async_std::{
     net::TcpStream,
     sync::{Mutex, RwLock},
     task::spawn,
 };
-use revolt_result::create_error;
+use voxly_result::create_error;
 use sentry::Level;
 
 use crate::config::{ProtocolConfiguration, WebsocketHandshakeCallback};
@@ -218,8 +218,8 @@ async fn listener(
     kill_signal_r: async_channel::Receiver<()>,
     write: &Mutex<WsWriter>,
 ) {
-    let stoat_config = revolt_config::config().await;
-    let url = stoat_config
+    let voxly_config = voxly_config::config().await;
+    let url = voxly_config
         .database
         .redis_pubsub
         .unwrap_or(REDIS_URI.to_string());

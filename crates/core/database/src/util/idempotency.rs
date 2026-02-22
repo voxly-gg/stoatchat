@@ -1,9 +1,9 @@
 use std::num::NonZeroUsize;
 
-use revolt_result::{create_error, Result};
+use voxly_result::{create_error, Result};
 
 #[cfg(feature = "rocket-impl")]
-use revolt_result::Error;
+use voxly_result::Error;
 
 use async_std::sync::Mutex;
 use once_cell::sync::Lazy;
@@ -44,10 +44,10 @@ impl IdempotencyKey {
 }
 
 #[cfg(feature = "rocket-impl")]
-use revolt_rocket_okapi::{
+use voxly_rocket_okapi::{
     gen::OpenApiGenerator,
     request::{OpenApiFromRequest, RequestHeaderInput},
-    revolt_okapi::openapi3::{Parameter, ParameterValue},
+    voxly_okapi::openapi3::{Parameter, ParameterValue},
 };
 
 #[cfg(feature = "rocket-impl")]
@@ -59,7 +59,7 @@ impl OpenApiFromRequest<'_> for IdempotencyKey {
         _gen: &mut OpenApiGenerator,
         _name: String,
         _required: bool,
-    ) -> revolt_rocket_okapi::Result<RequestHeaderInput> {
+    ) -> voxly_rocket_okapi::Result<RequestHeaderInput> {
         Ok(RequestHeaderInput::Parameter(Parameter {
             name: "Idempotency-Key".to_string(),
             description: Some("Unique key to prevent duplicate requests".to_string()),

@@ -1,8 +1,8 @@
 use authifier::AuthifierEvent;
-use revolt_result::Error;
+use voxly_result::Error;
 use serde::{Deserialize, Serialize};
 
-use revolt_models::v0::{
+use voxly_models::v0::{
     AppendMessage, Channel, ChannelUnread, ChannelVoiceState, Emoji, FieldsChannel, FieldsMember, FieldsMessage, FieldsRole, FieldsServer, FieldsUser, FieldsWebhook, Member, MemberCompositeKey, Message, PartialChannel, PartialMember, PartialMessage, PartialRole, PartialServer, PartialUser, PartialUserVoiceState, PartialWebhook, PolicyChange, RemovalIntention, Report, Server, User, UserSettings, UserVoiceState, Webhook
 };
 

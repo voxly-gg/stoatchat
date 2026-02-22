@@ -13,7 +13,7 @@ use authifier::config::Templates;
 use authifier::config::EmailExpiryConfig;
 use authifier::Authifier;
 use rand::Rng;
-use revolt_config::config;
+use voxly_config::config;
 
 #[cfg(feature = "mongodb")]
 pub use self::mongodb::*;
@@ -55,7 +55,7 @@ impl DatabaseInfo {
             DatabaseInfo::Auto => {
                 if std::env::var("TEST_DB").is_ok() {
                     DatabaseInfo::Test(format!(
-                        "revolt_test_{}",
+                        "voxly_test_{}",
                         rand::thread_rng().gen_range(1_000_000..10_000_000)
                     ))
                     .connect()
@@ -64,7 +64,7 @@ impl DatabaseInfo {
                     #[cfg(feature = "mongodb")]
                     return DatabaseInfo::MongoDb {
                         uri: config.database.mongodb,
-                        database_name: "revolt".to_string(),
+                        database_name: "voxly".to_string(),
                     }
                     .connect()
                     .await;
@@ -138,7 +138,7 @@ impl Database {
                                 .api
                                 .smtp
                                 .reply_to
-                                .unwrap_or("support@stoat.chat".into()),
+                                .unwrap_or("support@voxly.gg".into()),
                         ),
                         port: config.api.smtp.port,
                         use_tls: config.api.smtp.use_tls,
@@ -152,19 +152,19 @@ impl Database {
                     templates: if config.production {
                         Templates {
                             verify: Template {
-                                title: "Verify your Stoat account.".into(),
+                                title: "Verify your Voxly account.".into(),
                                 text: include_str!("../../templates/verify.txt").into(),
                                 url: format!("{}/login/verify/", config.hosts.app),
                                 html: Some(include_str!("../../templates/verify.html").into()),
                             },
                             reset: Template {
-                                title: "Reset your Stoat password.".into(),
+                                title: "Reset your Voxly password.".into(),
                                 text: include_str!("../../templates/reset.txt").into(),
                                 url: format!("{}/login/reset/", config.hosts.app),
                                 html: Some(include_str!("../../templates/reset.html").into()),
                             },
                             reset_existing: Template {
-                                title: "You already have a Stoat account, reset your password."
+                                title: "You already have a Voxly account, reset your password."
                                     .into(),
                                 text: include_str!("../../templates/reset-existing.txt").into(),
                                 url: format!("{}/login/reset/", config.hosts.app),
@@ -241,7 +241,7 @@ impl Database {
                 Database::Reference(_) => Default::default(),
                 #[cfg(feature = "mongodb")]
                 Database::MongoDb(MongoDb(client, _)) => authifier::Database::MongoDb(
-                    authifier::database::MongoDb(client.database("revolt")),
+                    authifier::database::MongoDb(client.database("voxly")),
                 ),
             },
             config: auth_config,

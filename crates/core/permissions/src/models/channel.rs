@@ -10,7 +10,7 @@ pub enum ChannelType {
     Unknown,
 }
 
-/// Permission value on Revolt
+/// Permission value on Voxly
 ///
 /// This should be restricted to the lower 52 bits to prevent any
 /// potential issues with Javascript. Also leave empty spaces for

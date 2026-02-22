@@ -1,6 +1,6 @@
-use revolt_database::{events::client::EventV1, Database, Report, Snapshot, SnapshotContent, User};
-use revolt_models::v0::{ReportStatus, ReportedContent};
-use revolt_result::{create_error, Result};
+use voxly_database::{events::client::EventV1, Database, Report, Snapshot, SnapshotContent, User};
+use voxly_models::v0::{ReportStatus, ReportedContent};
+use voxly_result::{create_error, Result};
 use rocket_empty::EmptyResponse;
 use serde::Deserialize;
 use ulid::Ulid;

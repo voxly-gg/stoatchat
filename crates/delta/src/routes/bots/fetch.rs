@@ -1,6 +1,6 @@
-use revolt_database::{util::reference::Reference, Database, User};
-use revolt_models::v0::FetchBotResponse;
-use revolt_result::{create_error, Result};
+use voxly_database::{util::reference::Reference, Database, User};
+use voxly_models::v0::FetchBotResponse;
+use voxly_result::{create_error, Result};
 use rocket::{serde::json::Json, State};
 
 /// # Fetch Bot
@@ -31,8 +31,8 @@ pub async fn fetch_bot(
 #[cfg(test)]
 mod test {
     use crate::{rocket, util::test::TestHarness};
-    use revolt_database::Bot;
-    use revolt_models::v0;
+    use voxly_database::Bot;
+    use voxly_models::v0;
     use rocket::http::{Header, Status};
 
     #[rocket::async_test]

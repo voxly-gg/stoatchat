@@ -10,9 +10,9 @@ use fcm_v1::{
     message::{Message, Notification},
     Client, Error as FcmError,
 };
-use revolt_config::config;
-use revolt_database::{events::rabbit::*, Database};
-use revolt_models::v0::{Channel, PushNotification};
+use voxly_config::config;
+use voxly_database::{events::rabbit::*, Database};
+use voxly_models::v0::{Channel, PushNotification};
 use serde_json::Value;
 
 pub struct FcmOutboundConsumer {
@@ -42,7 +42,7 @@ impl FcmOutboundConsumer {
 
 impl FcmOutboundConsumer {
     pub async fn new(db: Database) -> Result<FcmOutboundConsumer, &'static str> {
-        let config = revolt_config::config().await;
+        let config = voxly_config::config().await;
 
         Ok(FcmOutboundConsumer {
             db,
@@ -215,11 +215,11 @@ impl FcmOutboundConsumer {
                         .remove_push_subscription_by_session_id(&payload.session_id)
                         .await
                     {
-                        revolt_config::capture_error(&err);
+                        voxly_config::capture_error(&err);
                     }
                 }
                 err => {
-                    revolt_config::capture_error(&err);
+                    voxly_config::capture_error(&err);
                 }
             }
         }
@@ -242,7 +242,7 @@ impl AsyncConsumer for FcmOutboundConsumer {
             .consume_event(channel, deliver, basic_properties, content)
             .await
         {
-            revolt_config::capture_anyhow(&err);
+            voxly_config::capture_anyhow(&err);
             eprintln!("Failed to process FCM event: {err:?}");
         }
     }

@@ -4,19 +4,19 @@ import type * as Preset from '@docusaurus/preset-classic';
 import type { ScalarOptions } from '@scalar/docusaurus';
 
 const config: Config = {
-  title: 'Stoat Developers',
-  tagline: 'Developer documentation for Stoat',
-  favicon: 'https://stoat.chat/favicon.svg',
+  title: 'Voxly Developers',
+  tagline: 'Developer documentation for Voxly',
+  favicon: 'https://voxly.gg/favicon.svg',
 
   future: {
     v4: true,
   },
 
-  url: 'https://developers.stoat.chat',
+  url: 'https://developers.voxly.gg',
   baseUrl: '/',
 
-  organizationName: 'stoatchat',
-  projectName: 'stoatchat',
+  organizationName: 'voxly-gg',
+  projectName: 'voxly-backend',
 
   onBrokenLinks: 'throw',
 
@@ -33,7 +33,7 @@ const config: Config = {
           routeBasePath: '/',
           sidebarPath: './sidebars.ts',
           editUrl:
-            'https://github.com/stoatchat/stoatchat/tree/main/docs/',
+            'https://github.com/voxly-gg/stoatchat/tree/main/docs/',
         },
       } satisfies Preset.Options,
     ],
@@ -47,7 +47,7 @@ const config: Config = {
         route: '/api-reference',
         showNavLink: true,
         configuration: {
-          url: 'https://stoat.chat/api/openapi.json',
+          url: 'https://voxly.gg/api/openapi.json',
         },
       } as ScalarOptions,
     ],
@@ -80,10 +80,10 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'Stoat Developers',
+      title: 'Voxly Developers',
       logo: {
-        alt: 'Stoat',
-        src: 'https://stoat.chat/favicon.svg',
+        alt: 'Voxly',
+        src: 'https://voxly.gg/favicon.svg',
       },
       items: [
         {
@@ -92,7 +92,7 @@ const config: Config = {
           label: 'Docs'
         },
         {
-          href: 'https://github.com/stoatchat',
+          href: 'https://github.com/voxly-gg',
           label: 'GitHub',
           position: 'right',
         },
@@ -106,11 +106,11 @@ const config: Config = {
           items: [
             {
               label: 'Source Code',
-              href: 'https://github.com/stoatchat'
+              href: 'https://github.com/voxly-gg'
             },
             {
               label: 'Help Translate',
-              href: 'https://translate.stoat.chat'
+              href: 'https://translate.voxly.gg'
             },
           ],
         },
@@ -119,32 +119,32 @@ const config: Config = {
           items: [
             {
               label: 'About',
-              href: 'https://stoat.chat/about'
+              href: 'https://voxly.gg/about'
             },
             {
               label: 'Blog and Changelogs',
-              href: 'https://stoat.chat/updates'
+              href: 'https://voxly.gg/updates'
             },
             {
               label: 'Contact',
-              href: 'https://support.stoat.chat'
+              href: 'https://support.voxly.gg'
             },
           ],
         },
         {
-          title: 'Stoat on Socials',
+          title: 'Voxly on Socials',
           items: [
             {
               label: 'Bluesky',
-              href: 'https://bsky.app/profile/stoat.chat'
+              href: 'https://bsky.app/profile/voxly.gg'
             },
             {
               label: 'Reddit',
-              href: 'https://reddit.com/r/stoatchat'
+              href: 'https://reddit.com/r/voxly'
             },
             {
-              label: 'Stoat Server',
-              href: 'https://stt.gg/Testers'
+              label: 'Voxly Server',
+              href: 'https://voxly.gg/invite'
             },
           ],
         },
@@ -153,24 +153,24 @@ const config: Config = {
           items: [
             {
               label: 'Community Guidelines',
-              href: 'https://stoat.chat/legal/community-guidelines'
+              href: 'https://voxly.gg/legal/community-guidelines'
             },
             {
               label: 'Terms of Service',
-              href: 'https://stoat.chat/legal/terms'
+              href: 'https://voxly.gg/legal/terms'
             },
             {
               label: 'Privacy Policy',
-              href: 'https://stoat.chat/legal/privacy'
+              href: 'https://voxly.gg/legal/privacy'
             },
             {
               label: 'Imprint',
-              href: 'https://stoat.chat/legal/imprint'
+              href: 'https://voxly.gg/legal/imprint'
             },
           ],
         },
       ],
-      copyright: `© Revolt Platforms Ltd, ${new Date().getFullYear()}`,
+      copyright: `© Voxly, ${new Date().getFullYear()}`,
     },
     prism: {
       theme: prismThemes.github,

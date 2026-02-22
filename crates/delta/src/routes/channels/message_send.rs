@@ -1,13 +1,13 @@
 use chrono::{Duration, Utc};
-use revolt_database::util::permissions::DatabasePermissionQuery;
-use revolt_database::{
+use voxly_database::util::permissions::DatabasePermissionQuery;
+use voxly_database::{
     util::idempotency::IdempotencyKey, util::reference::Reference, Database, User,
 };
-use revolt_database::{Interactions, Message, AMQP};
-use revolt_models::v0;
-use revolt_permissions::PermissionQuery;
-use revolt_permissions::{calculate_channel_permissions, ChannelPermission};
-use revolt_result::{create_error, Result};
+use voxly_database::{Interactions, Message, AMQP};
+use voxly_models::v0;
+use voxly_permissions::PermissionQuery;
+use voxly_permissions::{calculate_channel_permissions, ChannelPermission};
+use voxly_result::{create_error, Result};
 use rocket::serde::json::Json;
 use rocket::State;
 use validator::Validate;
@@ -84,7 +84,7 @@ pub async fn message_send(
     // Create model user / members
     let model_user = user
         .clone()
-        .into_known_static(revolt_presence::is_online(&user.id).await)
+        .into_known_static(voxly_presence::is_online(&user.id).await)
         .await;
 
     let model_member: Option<v0::Member> = query
@@ -116,13 +116,13 @@ mod test {
     use std::collections::HashMap;
 
     use crate::{rocket, util::test::TestHarness};
-    use revolt_database::{
+    use voxly_database::{
         util::{idempotency::IdempotencyKey, reference::Reference},
         Channel, Member, Message, MessageFlagsValue, PartialChannel, PartialMember, Role, Server,
     };
-    use revolt_models::v0::{self, DataCreateServerChannel, MessageFlags};
-    use revolt_permissions::{ChannelPermission, OverrideField};
-    use revolt_result::ErrorType;
+    use voxly_models::v0::{self, DataCreateServerChannel, MessageFlags};
+    use voxly_permissions::{ChannelPermission, OverrideField};
+    use voxly_result::ErrorType;
 
     #[rocket::async_test]
     async fn message_mention_constraints() {

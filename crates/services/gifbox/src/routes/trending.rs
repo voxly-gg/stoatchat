@@ -2,8 +2,8 @@ use axum::{
     extract::{Query, State},
     Json,
 };
-use revolt_database::User;
-use revolt_result::{create_error, Result};
+use voxly_database::User;
+use voxly_result::{create_error, Result};
 use serde::Deserialize;
 use utoipa::IntoParams;
 

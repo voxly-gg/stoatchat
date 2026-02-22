@@ -12,7 +12,7 @@ pub struct EncryptionKey {
 
 impl EncryptionKey {
     pub async fn from_config() -> EncryptionKey {
-        EncryptionKey::new(revolt_config::config().await.files.encryption_key)
+        EncryptionKey::new(voxly_config::config().await.files.encryption_key)
     }
 
     pub fn new(key: String) -> EncryptionKey {

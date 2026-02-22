@@ -1,4 +1,4 @@
-use revolt_result::{create_error, Error};
+use voxly_result::{create_error, Error};
 use rocket::{
     http::Status,
     request::{FromRequest, Outcome},

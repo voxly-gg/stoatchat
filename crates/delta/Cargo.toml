@@ -1,5 +1,5 @@
 [package]
-name = "revolt-delta"
+name = "voxly-delta"
 version = "0.11.5"
 license = "AGPL-3.0-or-later"
 authors = ["Paul Makles <paulmakles@gmail.com>"]
@@ -69,21 +69,21 @@ amqprs = { version = "1.7.0" }
 
 # core
 authifier = "1.0.16"
-revolt-config = { path = "../core/config" }
-revolt-database = { path = "../core/database", features = [
+voxly-config = { path = "../core/config" }
+voxly-database = { path = "../core/database", features = [
     "rocket-impl",
     "redis-is-patched",
     "voice",
 ] }
-revolt-models = { path = "../core/models", features = [
+voxly-models = { path = "../core/models", features = [
     "schemas",
     "validator",
     "rocket",
 ] }
-revolt-presence = { path = "../core/presence" }
-revolt-result = { path = "../core/result", features = ["rocket", "okapi"] }
-revolt-permissions = { path = "../core/permissions", features = ["schemas"] }
-revolt-ratelimits = { path = "../core/ratelimits", features = ["rocket"] }
+voxly-presence = { path = "../core/presence" }
+voxly-result = { path = "../core/result", features = ["rocket", "okapi"] }
+voxly-permissions = { path = "../core/permissions", features = ["schemas"] }
+voxly-ratelimits = { path = "../core/ratelimits", features = ["rocket"] }
 
 # voice
 livekit-api = "0.4.4"

@@ -1,12 +1,12 @@
-use revolt_database::{
+use voxly_database::{
     util::{permissions::DatabasePermissionQuery, reference::Reference},
     voice::{get_user_voice_channel_in_server, remove_user_from_voice_channel, VoiceClient},
     Database, RemovalIntention, ServerBan, User,
 };
-use revolt_models::v0;
+use voxly_models::v0;
 
-use revolt_permissions::{calculate_server_permissions, ChannelPermission};
-use revolt_result::{create_error, Result};
+use voxly_permissions::{calculate_server_permissions, ChannelPermission};
+use voxly_result::{create_error, Result};
 use rocket::{serde::json::Json, State};
 use validator::Validate;
 

@@ -2,8 +2,8 @@ use async_tungstenite::tungstenite::{handshake, Message};
 use futures::channel::oneshot::Sender;
 use once_cell::sync::Lazy;
 use regex::Regex;
-use revolt_database::events::client::ReadyPayloadFields;
-use revolt_result::{create_error, Result};
+use voxly_database::events::client::ReadyPayloadFields;
+use voxly_result::{create_error, Result};
 use serde::{Deserialize, Serialize};
 
 /// matches either a single word ie "users" or a key and value ie "settings[notifications]"

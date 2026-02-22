@@ -2,7 +2,7 @@ use bson::Document;
 use futures::StreamExt;
 use iso8601_timestamp::Timestamp;
 use mongodb::options::ReadConcern;
-use revolt_result::Result;
+use voxly_result::Result;
 
 use crate::{FieldsMember, Member, MemberCompositeKey, PartialMember};
 use crate::{IntoDocumentPath, MongoDb};
@@ -93,7 +93,7 @@ impl AbstractServerMembers for MongoDb {
         &self,
         server_id: &str,
     ) -> Result<ChunkedServerMembersGenerator> {
-        let config = revolt_config::config().await;
+        let config = voxly_config::config().await;
 
         let mut session = self
             .start_session()
@@ -148,7 +148,7 @@ impl AbstractServerMembers for MongoDb {
         server_id: &str,
         roles: &[String],
     ) -> Result<ChunkedServerMembersGenerator> {
-        let config = revolt_config::config().await;
+        let config = voxly_config::config().await;
 
         let mut session = self
             .start_session()
@@ -268,7 +268,7 @@ impl AbstractServerMembers for MongoDb {
 
     /// Marks a member for deletion.
     /// This will remove the record if the user has no pending actions (eg. timeout),
-    /// otherwise will slate the record for deletion by revolt_crond once the actions expire.
+    /// otherwise will slate the record for deletion by voxly_crond once the actions expire.
     async fn soft_delete_member(&self, id: &MemberCompositeKey) -> Result<()> {
         let member = self.fetch_member(&id.server, &id.user).await;
         if let Ok(member) = member {

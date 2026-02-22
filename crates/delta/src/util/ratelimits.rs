@@ -1,4 +1,4 @@
-use revolt_ratelimits::ratelimiter::RatelimitResolver;
+use voxly_ratelimits::ratelimiter::RatelimitResolver;
 use rocket::{http::Method, Request};
 
 pub struct DeltaRatelimits;

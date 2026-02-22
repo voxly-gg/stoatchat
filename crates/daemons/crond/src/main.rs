@@ -1,6 +1,6 @@
-use revolt_config::configure;
-use revolt_database::DatabaseInfo;
-use revolt_result::Result;
+use voxly_config::configure;
+use voxly_database::DatabaseInfo;
+use voxly_result::Result;
 use tasks::{file_deletion, prune_dangling_files, prune_members};
 use tokio::try_join;
 

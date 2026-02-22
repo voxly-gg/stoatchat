@@ -1,9 +1,9 @@
-use revolt_database::{
+use voxly_database::{
     util::reference::Reference,
     voice::{get_voice_state, VoiceClient},
     Channel, Database, User, AMQP,
 };
-use revolt_result::{create_error, Result, ToRevoltError};
+use voxly_result::{create_error, Result, ToVoxlyError};
 
 use rocket::State;
 use rocket_empty::EmptyResponse;
@@ -58,7 +58,7 @@ pub async fn stop_ring(
             .await
             .to_internal_error()
         {
-            revolt_config::capture_internal_error!(&e);
+            voxly_config::capture_internal_error!(&e);
             return Err(e);
         }
 

@@ -1,7 +1,7 @@
 use anyhow::Result;
 use image::{DynamicImage, ImageBuffer, ImageReader};
 use jxl_oxide::integration::JxlDecoder;
-use revolt_config::report_internal_error;
+use voxly_config::report_internal_error;
 use std::io::{BufRead, Read, Seek};
 use tempfile::NamedTempFile;
 use tiny_skia::Pixmap;
@@ -9,17 +9,17 @@ use tiny_skia::Pixmap;
 use crate::{MediaError, MediaRepository};
 
 pub struct MediaImpl {
-    config: revolt_config::Files,
+    config: voxly_config::Files,
 }
 
 impl MediaImpl {
     pub async fn from_config() -> MediaImpl {
         MediaImpl {
-            config: revolt_config::config().await.files,
+            config: voxly_config::config().await.files,
         }
     }
 
-    pub fn new(config: revolt_config::Files) -> MediaImpl {
+    pub fn new(config: voxly_config::Files) -> MediaImpl {
         MediaImpl { config }
     }
 }

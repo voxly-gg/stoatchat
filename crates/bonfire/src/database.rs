@@ -1,5 +1,5 @@
 use once_cell::sync::OnceCell;
-use revolt_database::{Database, DatabaseInfo};
+use voxly_database::{Database, DatabaseInfo};
 
 static DBCONN: OnceCell<Database> = OnceCell::new();
 

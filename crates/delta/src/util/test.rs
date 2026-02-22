@@ -5,12 +5,12 @@ use authifier::{
 use futures::StreamExt;
 use rand::Rng;
 use redis_kiss::redis::aio::PubSub;
-use revolt_database::{
+use voxly_database::{
     events::client::EventV1, Channel, Database, Member, Message, PartialRole, Server, User, AMQP,
 };
-use revolt_database::{util::idempotency::IdempotencyKey, Role};
-use revolt_models::v0;
-use revolt_permissions::OverrideField;
+use voxly_database::{util::idempotency::IdempotencyKey, Role};
+use voxly_models::v0;
+use voxly_permissions::OverrideField;
 use rocket::http::Header;
 use rocket::local::asynchronous::{Client, LocalRequest, LocalResponse};
 
@@ -25,7 +25,7 @@ pub struct TestHarness {
 
 impl TestHarness {
     pub async fn new() -> TestHarness {
-        let config = revolt_config::config().await;
+        let config = voxly_config::config().await;
 
         let client = Client::tracked(crate::web().await)
             .await
@@ -95,7 +95,7 @@ impl TestHarness {
     pub async fn account_from_user(&self, id: String) -> (Account, Session) {
         let account = Account {
             id,
-            email: format!("{}@revolt.chat", TestHarness::rand_string()),
+            email: format!("{}@voxly.gg", TestHarness::rand_string()),
             password: Default::default(),
             email_normalised: Default::default(),
             deletion: None,

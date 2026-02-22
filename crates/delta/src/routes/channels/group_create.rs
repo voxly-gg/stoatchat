@@ -1,6 +1,6 @@
-use revolt_database::{Channel, Database, RelationshipStatus, User};
-use revolt_models::v0;
-use revolt_result::{create_error, Result};
+use voxly_database::{Channel, Database, RelationshipStatus, User};
+use voxly_models::v0;
+use voxly_result::{create_error, Result};
 
 use rocket::serde::json::Json;
 use rocket::State;
@@ -42,8 +42,8 @@ pub async fn create_group(
 #[cfg(test)]
 mod test {
     use crate::{rocket, util::test::TestHarness};
-    use revolt_database::events::client::EventV1;
-    use revolt_models::v0;
+    use voxly_database::events::client::EventV1;
+    use voxly_models::v0;
     use rocket::http::{ContentType, Header, Status};
 
     #[rocket::async_test]

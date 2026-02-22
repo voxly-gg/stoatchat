@@ -1,6 +1,6 @@
-use revolt_database::{util::reference::Reference, Database};
-use revolt_models::v0::Webhook;
-use revolt_result::Result;
+use voxly_database::{util::reference::Reference, Database};
+use voxly_models::v0::Webhook;
+use voxly_result::Result;
 use rocket::{serde::json::Json, State};
 
 /// # Gets a webhook

@@ -1,10 +1,10 @@
-use revolt_database::{
+use voxly_database::{
     util::{permissions::DatabasePermissionQuery, reference::Reference},
     Database, User,
 };
-use revolt_models::v0;
-use revolt_permissions::{calculate_channel_permissions, ChannelPermission};
-use revolt_result::Result;
+use voxly_models::v0;
+use voxly_permissions::{calculate_channel_permissions, ChannelPermission};
+use voxly_result::Result;
 use rocket::State;
 use rocket_empty::EmptyResponse;
 

@@ -1,8 +1,8 @@
-use revolt_database::util::permissions::DatabasePermissionQuery;
-use revolt_database::{util::reference::Reference, Channel, Database, User};
-use revolt_models::v0;
-use revolt_permissions::{calculate_server_permissions, ChannelPermission};
-use revolt_result::{create_error, Result};
+use voxly_database::util::permissions::DatabasePermissionQuery;
+use voxly_database::{util::reference::Reference, Channel, Database, User};
+use voxly_models::v0;
+use voxly_permissions::{calculate_server_permissions, ChannelPermission};
+use voxly_result::{create_error, Result};
 
 use rocket::serde::json::Json;
 use rocket::State;

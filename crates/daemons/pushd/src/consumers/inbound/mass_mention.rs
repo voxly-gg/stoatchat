@@ -12,11 +12,11 @@ use amqprs::{
 };
 use anyhow::Result;
 use async_trait::async_trait;
-use revolt_database::{
+use voxly_database::{
     events::rabbit::*, util::bulk_permissions::BulkDatabasePermissionQuery, Database, Member,
     MessageFlagsValue,
 };
-use revolt_models::v0::{MessageFlags, PushNotification};
+use voxly_models::v0::{MessageFlags, PushNotification};
 
 pub struct MassMessageConsumer {
     #[allow(dead_code)]
@@ -72,7 +72,7 @@ impl MassMessageConsumer {
             .find_sessions_with_subscription(users)
             .await
         {
-            let config = revolt_config::config().await;
+            let config = voxly_config::config().await;
             for session in sessions {
                 if let Some(sub) = session.subscription {
                     let mut sendable = PayloadToService {
@@ -127,7 +127,7 @@ impl MassMessageConsumer {
         _basic_properties: BasicProperties,
         content: Vec<u8>,
     ) -> Result<()> {
-        let config = revolt_config::config().await;
+        let config = voxly_config::config().await;
         let content = String::from_utf8(content)?;
         let payload: MassMessageSentPayload = serde_json::from_str(content.as_str())?;
 
@@ -186,11 +186,11 @@ impl MassMessageConsumer {
                             .add_mention_to_many_unreads(push.channel.id(), &userids, &ack_chnl)
                             .await
                         {
-                            revolt_config::capture_error(&err);
+                            voxly_config::capture_error(&err);
                         }
 
                         // ignore anyone in this list
-                        let online_users = revolt_presence::filter_online(&userids).await;
+                        let online_users = voxly_presence::filter_online(&userids).await;
                         let target_users: Vec<String> = userids
                             .iter()
                             .filter(|id| {
@@ -249,7 +249,7 @@ impl MassMessageConsumer {
 
                         debug!("viewing members: {:?}", viewing_members);
 
-                        let online = revolt_presence::filter_online(&viewing_members).await;
+                        let online = voxly_presence::filter_online(&viewing_members).await;
                         debug!("online: {:?}", online);
 
                         let targets: Vec<String> = viewing_members
@@ -285,7 +285,7 @@ impl AsyncConsumer for MassMessageConsumer {
             .consume_event(channel, deliver, basic_properties, content)
             .await
         {
-            revolt_config::capture_anyhow(&err);
+            voxly_config::capture_anyhow(&err);
             eprintln!("Failed to process mass message event: {err:?}");
         }
     }

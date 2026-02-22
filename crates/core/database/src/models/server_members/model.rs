@@ -1,6 +1,6 @@
 use iso8601_timestamp::Timestamp;
-use revolt_permissions::{calculate_channel_permissions, ChannelPermission};
-use revolt_result::{create_error, Result};
+use voxly_permissions::{calculate_channel_permissions, ChannelPermission};
+use voxly_result::{create_error, Result};
 
 use crate::{
     events::client::EventV1, util::permissions::DatabasePermissionQuery, Channel,
@@ -307,7 +307,7 @@ impl Member {
 #[cfg(test)]
 mod tests {
     use iso8601_timestamp::{Duration, Timestamp};
-    use revolt_models::v0::DataCreateServer;
+    use voxly_models::v0::DataCreateServer;
 
     use crate::{Member, PartialMember, RemovalIntention, Server, User};
 

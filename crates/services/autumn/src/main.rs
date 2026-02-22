@@ -3,8 +3,8 @@ use std::net::{Ipv4Addr, SocketAddr};
 use axum::{middleware::from_fn_with_state, Router};
 
 use axum_macros::FromRef;
-use revolt_database::{Database, DatabaseInfo};
-use revolt_ratelimits::axum as ratelimiter;
+use voxly_database::{Database, DatabaseInfo};
+use voxly_ratelimits::axum as ratelimiter;
 use tokio::net::TcpListener;
 use utoipa::{
     openapi::security::{ApiKey, ApiKeyValue, SecurityScheme},
@@ -28,7 +28,7 @@ struct AppState {
 #[tokio::main]
 async fn main() -> Result<(), std::io::Error> {
     // Configure logging and environment
-    revolt_config::configure!(files);
+    voxly_config::configure!(files);
 
     // Wait for ClamAV
     clamav::init().await;
@@ -45,8 +45,8 @@ async fn main() -> Result<(), std::io::Error> {
         ),
         components(
             schemas(
-                revolt_result::Error,
-                revolt_result::ErrorType,
+                voxly_result::Error,
+                voxly_result::ErrorType,
                 api::RootResponse,
                 api::Tag,
                 api::UploadPayload,

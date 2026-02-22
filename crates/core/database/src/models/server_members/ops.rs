@@ -1,7 +1,7 @@
 #[cfg(feature = "mongodb")]
 use ::mongodb::{ClientSession, SessionCursor};
 
-use revolt_result::Result;
+use voxly_result::Result;
 
 use crate::{FieldsMember, Member, MemberCompositeKey, PartialMember};
 

@@ -10,7 +10,7 @@ use amqprs::{
 use anyhow::Result;
 use async_trait::async_trait;
 use log::debug;
-use revolt_database::{events::rabbit::*, Database};
+use voxly_database::{events::rabbit::*, Database};
 
 pub struct DmCallConsumer {
     #[allow(dead_code)]
@@ -69,8 +69,8 @@ impl DmCallConsumer {
 
         debug!("Received dm call start/stop event");
 
-        let (revolt_database::Channel::DirectMessage { recipients, .. }
-        | revolt_database::Channel::Group { recipients, .. }) =
+        let (voxly_database::Channel::DirectMessage { recipients, .. }
+        | voxly_database::Channel::Group { recipients, .. }) =
             self.db.fetch_channel(&payload.channel_id).await?
         else {
             warn!(
@@ -93,7 +93,7 @@ impl DmCallConsumer {
                 .collect::<Vec<_>>()
         };
 
-        let config = revolt_config::config().await;
+        let config = voxly_config::config().await;
 
         for user_id in call_recipients {
             if let Ok(sessions) = self.authifier_db.find_sessions(&user_id).await {
@@ -161,7 +161,7 @@ impl AsyncConsumer for DmCallConsumer {
             .consume_event(channel, deliver, basic_properties, content)
             .await
         {
-            revolt_config::capture_anyhow(&err);
+            voxly_config::capture_anyhow(&err);
             warn!("Failed to process dm call start/stop event: {err:?}");
         }
     }

@@ -7,10 +7,10 @@ use crate::{
 use iso8601_timestamp::{Duration, Timestamp};
 use livekit_protocol::ParticipantPermission;
 use redis_kiss::{get_connection as _get_connection, redis::Pipeline, AsyncCommands, Conn};
-use revolt_config::FeaturesLimits;
-use revolt_models::v0::{self, PartialUserVoiceState, UserVoiceState};
-use revolt_permissions::{calculate_channel_permissions, ChannelPermission, PermissionValue};
-use revolt_result::{create_error, Result, ToRevoltError};
+use voxly_config::FeaturesLimits;
+use voxly_models::v0::{self, PartialUserVoiceState, UserVoiceState};
+use voxly_permissions::{calculate_channel_permissions, ChannelPermission, PermissionValue};
+use voxly_result::{create_error, Result, ToVoxlyError};
 
 mod voice_client;
 pub use voice_client::VoiceClient;

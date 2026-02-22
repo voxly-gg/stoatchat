@@ -1,6 +1,6 @@
 use std::time::Duration;
 
-use crate::{revolt_result::Result, RatelimitEvent, RatelimitEventType};
+use crate::{voxly_result::Result, RatelimitEvent, RatelimitEventType};
 
 #[cfg(feature = "mongodb")]
 mod mongodb;

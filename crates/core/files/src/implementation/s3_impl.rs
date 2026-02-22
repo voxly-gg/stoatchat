@@ -5,7 +5,7 @@ use aws_sdk_s3::{
     config::{Credentials, Region},
     Client, Config,
 };
-use revolt_config::FilesS3;
+use voxly_config::FilesS3;
 
 use crate::{EncryptionRepository, FileStorageRepository};
 
@@ -16,7 +16,7 @@ pub struct S3Storage<ER: EncryptionRepository> {
 
 impl<ER: EncryptionRepository> S3Storage<ER> {
     pub async fn from_config(encryption: ER) -> S3Storage<ER> {
-        S3Storage::new(encryption, revolt_config::config().await.files.s3)
+        S3Storage::new(encryption, voxly_config::config().await.files.s3)
     }
 
     pub fn new(encryption: ER, s3_config: FilesS3) -> S3Storage<ER> {

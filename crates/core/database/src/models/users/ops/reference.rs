@@ -1,6 +1,6 @@
 use authifier::models::Session;
 use iso8601_timestamp::Timestamp;
-use revolt_result::Result;
+use voxly_result::Result;
 
 use crate::{FieldsUser, PartialUser, RelationshipStatus, User};
 use crate::{ReferenceDb, Relationship};

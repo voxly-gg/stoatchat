@@ -3,15 +3,15 @@ use crate::{Database, Message, AMQP};
 
 use deadqueue::limited::Queue;
 use once_cell::sync::Lazy;
-use revolt_config::capture_message;
-use revolt_models::v0::PushNotification;
+use voxly_config::capture_message;
+use voxly_models::v0::PushNotification;
 use std::{
     collections::{HashMap, HashSet},
     time::Duration,
 };
 use validator::HasLen;
 
-use revolt_result::Result;
+use voxly_result::Result;
 
 use super::DelayedTask;
 use crate::Channel::TextChannel;
@@ -108,7 +108,7 @@ pub async fn handle_ack_event(
                         .ack_message(user.to_string(), channel.to_string(), id.to_owned())
                         .await
                     {
-                        revolt_config::capture_error(&err);
+                        voxly_config::capture_error(&err);
                     }
                 };
             }
@@ -172,7 +172,7 @@ pub async fn handle_ack_event(
                     .message_sent(recipients.clone(), push.clone().unwrap())
                     .await
                 {
-                    revolt_config::capture_error(&err);
+                    voxly_config::capture_error(&err);
                 }
 
                 if message.contains_mass_push_mention() {
@@ -195,7 +195,7 @@ pub async fn handle_ack_event(
                     if let Err(err) =
                         amqp.mass_mention_message_sent(server, mass_mentions).await
                     {
-                        revolt_config::capture_error(&err);
+                        voxly_config::capture_error(&err);
                     }
                 } else {
                     panic!("Unknown channel type when sending mass mention event");
@@ -227,7 +227,7 @@ pub async fn worker(db: Database, amqp: AMQP) {
                 let (user, channel, _) = key;
 
                 if let Err(err) = handle_ack_event(&event, &db, &amqp, user, channel).await {
-                    revolt_config::capture_error(&err);
+                    voxly_config::capture_error(&err);
                     error!("{err:?} for {event:?}. ({user:?}, {channel})");
                 } else {
                     info!("User {user:?} ack in {channel} with {event:?}");
@@ -274,7 +274,7 @@ pub async fn worker(db: Database, amqp: AMQP) {
 
                                 // put a cap on the amount of messages that can be queued, for particularly active channels
                                 if (existing.length() as u16)
-                                    < revolt_config::config()
+                                    < voxly_config::config()
                                         .await
                                         .features
                                         .advanced
@@ -284,7 +284,7 @@ pub async fn worker(db: Database, amqp: AMQP) {
                                 }
                             } else {
                                 let err_msg = format!("Got zero-length message event: {event:?}");
-                                capture_message(&err_msg, revolt_config::Level::Warning);
+                                capture_message(&err_msg, voxly_config::Level::Warning);
                                 info!("{err_msg}")
                             }
                         } else {

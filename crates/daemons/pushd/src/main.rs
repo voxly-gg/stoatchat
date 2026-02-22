@@ -10,7 +10,7 @@ use amqprs::{
     consumer::AsyncConsumer,
     FieldTable,
 };
-use revolt_config::{config, Settings};
+use voxly_config::{config, Settings};
 use tokio::sync::Notify;
 
 mod consumers;
@@ -26,18 +26,18 @@ use consumers::{
 #[tokio::main(flavor = "multi_thread", worker_threads = 2)]
 async fn main() {
     // Configure logging and environment
-    revolt_config::configure!(pushd);
+    voxly_config::configure!(pushd);
 
     // Setup database
-    let db = revolt_database::DatabaseInfo::Auto.connect().await.unwrap();
+    let db = voxly_database::DatabaseInfo::Auto.connect().await.unwrap();
     let authifier: authifier::Database;
 
     if let Some(client) = match &db {
-        revolt_database::Database::Reference(_) => None,
-        revolt_database::Database::MongoDb(mongo) => Some(mongo),
+        voxly_database::Database::Reference(_) => None,
+        voxly_database::Database::MongoDb(mongo) => Some(mongo),
     } {
         authifier =
-            authifier::Database::MongoDb(authifier::database::MongoDb(client.database("revolt")));
+            authifier::Database::MongoDb(authifier::database::MongoDb(client.database("voxly")));
     } else {
         panic!("Mongo is not in use, can't connect via authifier!")
     }
@@ -247,7 +247,7 @@ where
         ))
         .await
         .expect(
-            "This probably means the revolt.notifications exchange does not exist in rabbitmq!",
+            "This probably means the voxly.notifications exchange does not exist in rabbitmq!",
         );
 
     let args = BasicConsumeArguments::new(queue_name, "")

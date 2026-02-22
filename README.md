@@ -1,27 +1,27 @@
 <div align="center">
 <h1>
-  Stoat Backend
+  Voxly Backend
   
-  [![Stars](https://img.shields.io/github/stars/revoltchat/backend?style=flat-square&logoColor=white)](https://github.com/revoltchat/backend/stargazers)
-  [![Forks](https://img.shields.io/github/forks/revoltchat/backend?style=flat-square&logoColor=white)](https://github.com/revoltchat/backend/network/members)
-  [![Pull Requests](https://img.shields.io/github/issues-pr/revoltchat/backend?style=flat-square&logoColor=white)](https://github.com/revoltchat/backend/pulls)
-  [![Issues](https://img.shields.io/github/issues/revoltchat/backend?style=flat-square&logoColor=white)](https://github.com/revoltchat/backend/issues)
-  [![Contributors](https://img.shields.io/github/contributors/revoltchat/backend?style=flat-square&logoColor=white)](https://github.com/revoltchat/backend/graphs/contributors)
-  [![License](https://img.shields.io/github/license/revoltchat/backend?style=flat-square&logoColor=white)](https://github.com/revoltchat/backend/blob/main/LICENSE)
+  [![Stars](https://img.shields.io/github/stars/voxly-gg/stoatchat?style=flat-square&logoColor=white)](https://github.com/voxly-gg/stoatchat/stargazers)
+  [![Forks](https://img.shields.io/github/forks/voxly-gg/stoatchat?style=flat-square&logoColor=white)](https://github.com/voxly-gg/stoatchat/network/members)
+  [![Pull Requests](https://img.shields.io/github/issues-pr/voxly-gg/stoatchat?style=flat-square&logoColor=white)](https://github.com/voxly-gg/stoatchat/pulls)
+  [![Issues](https://img.shields.io/github/issues/voxly-gg/stoatchat?style=flat-square&logoColor=white)](https://github.com/voxly-gg/stoatchat/issues)
+  [![Contributors](https://img.shields.io/github/contributors/voxly-gg/stoatchat?style=flat-square&logoColor=white)](https://github.com/voxly-gg/stoatchat/graphs/contributors)
+  [![License](https://img.shields.io/github/license/voxly-gg/stoatchat?style=flat-square&logoColor=white)](https://github.com/voxly-gg/stoatchat/blob/main/LICENSE)
 </h1>
-The services and libraries that power the Revolt service.<br/>
+The services and libraries that power Voxly.<br/>
 <br/>
 
 | Crate              | Path                                               | Description                         |                                                                                                                                                                                                                                                                                                           |
 | ------------------ | -------------------------------------------------- | ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `core/config`      | [crates/core/config](crates/core/config)           | Core: Configuration                 | ![Crates.io Version](https://img.shields.io/crates/v/revolt-config) ![Crates.io Version](https://img.shields.io/crates/msrv/revolt-config) ![Crates.io Version](https://img.shields.io/crates/size/revolt-config) ![Crates.io License](https://img.shields.io/crates/l/revolt-config)                     |
-| `core/database`    | [crates/core/database](crates/core/database)       | Core: Database Implementation       | ![Crates.io Version](https://img.shields.io/crates/v/revolt-database) ![Crates.io Version](https://img.shields.io/crates/msrv/revolt-database) ![Crates.io Version](https://img.shields.io/crates/size/revolt-database) ![Crates.io License](https://img.shields.io/crates/l/revolt-database)             |
-| `core/files`       | [crates/core/files](crates/core/files)             | Core: S3 and encryption subroutines | ![Crates.io Version](https://img.shields.io/crates/v/revolt-files) ![Crates.io Version](https://img.shields.io/crates/msrv/revolt-files) ![Crates.io Version](https://img.shields.io/crates/size/revolt-files) ![Crates.io License](https://img.shields.io/crates/l/revolt-files)                         |
-| `core/models`      | [crates/core/models](crates/core/models)           | Core: API Models                    | ![Crates.io Version](https://img.shields.io/crates/v/revolt-models) ![Crates.io Version](https://img.shields.io/crates/msrv/revolt-models) ![Crates.io Version](https://img.shields.io/crates/size/revolt-models) ![Crates.io License](https://img.shields.io/crates/l/revolt-models)                     |
-| `core/permissions` | [crates/core/permissions](crates/core/permissions) | Core: Permission Logic              | ![Crates.io Version](https://img.shields.io/crates/v/revolt-permissions) ![Crates.io Version](https://img.shields.io/crates/msrv/revolt-permissions) ![Crates.io Version](https://img.shields.io/crates/size/revolt-permissions) ![Crates.io License](https://img.shields.io/crates/l/revolt-permissions) |
-| `core/presence`    | [crates/core/presence](crates/core/presence)       | Core: User Presence                 | ![Crates.io Version](https://img.shields.io/crates/v/revolt-presence) ![Crates.io Version](https://img.shields.io/crates/msrv/revolt-presence) ![Crates.io Version](https://img.shields.io/crates/size/revolt-presence) ![Crates.io License](https://img.shields.io/crates/l/revolt-presence)             |
-| `core/result`      | [crates/core/result](crates/core/result)           | Core: Result and Error types        | ![Crates.io Version](https://img.shields.io/crates/v/revolt-result) ![Crates.io Version](https://img.shields.io/crates/msrv/revolt-result) ![Crates.io Version](https://img.shields.io/crates/size/revolt-result) ![Crates.io License](https://img.shields.io/crates/l/revolt-result)                     |
-| `core/coalesced`   | [crates/core/coalesced](crates/core/coalesced)     | Core: Coalescion service            | ![Crates.io Version](https://img.shields.io/crates/v/revolt-coalesced) ![Crates.io Version](https://img.shields.io/crates/msrv/revolt-coalesced) ![Crates.io Version](https://img.shields.io/crates/size/revolt-coalesced) ![Crates.io License](https://img.shields.io/crates/l/revolt-coalesced)         |
+| `core/config`      | [crates/core/config](crates/core/config)           | Core: Configuration                 | ![Crates.io Version](https://img.shields.io/crates/v/voxly-config) ![Crates.io Version](https://img.shields.io/crates/msrv/voxly-config) ![Crates.io Version](https://img.shields.io/crates/size/voxly-config) ![Crates.io License](https://img.shields.io/crates/l/voxly-config)                     |
+| `core/database`    | [crates/core/database](crates/core/database)       | Core: Database Implementation       | ![Crates.io Version](https://img.shields.io/crates/v/voxly-database) ![Crates.io Version](https://img.shields.io/crates/msrv/voxly-database) ![Crates.io Version](https://img.shields.io/crates/size/voxly-database) ![Crates.io License](https://img.shields.io/crates/l/voxly-database)             |
+| `core/files`       | [crates/core/files](crates/core/files)             | Core: S3 and encryption subroutines | ![Crates.io Version](https://img.shields.io/crates/v/voxly-files) ![Crates.io Version](https://img.shields.io/crates/msrv/voxly-files) ![Crates.io Version](https://img.shields.io/crates/size/voxly-files) ![Crates.io License](https://img.shields.io/crates/l/voxly-files)                         |
+| `core/models`      | [crates/core/models](crates/core/models)           | Core: API Models                    | ![Crates.io Version](https://img.shields.io/crates/v/voxly-models) ![Crates.io Version](https://img.shields.io/crates/msrv/voxly-models) ![Crates.io Version](https://img.shields.io/crates/size/voxly-models) ![Crates.io License](https://img.shields.io/crates/l/voxly-models)                     |
+| `core/permissions` | [crates/core/permissions](crates/core/permissions) | Core: Permission Logic              | ![Crates.io Version](https://img.shields.io/crates/v/voxly-permissions) ![Crates.io Version](https://img.shields.io/crates/msrv/voxly-permissions) ![Crates.io Version](https://img.shields.io/crates/size/voxly-permissions) ![Crates.io License](https://img.shields.io/crates/l/voxly-permissions) |
+| `core/presence`    | [crates/core/presence](crates/core/presence)       | Core: User Presence                 | ![Crates.io Version](https://img.shields.io/crates/v/voxly-presence) ![Crates.io Version](https://img.shields.io/crates/msrv/voxly-presence) ![Crates.io Version](https://img.shields.io/crates/size/voxly-presence) ![Crates.io License](https://img.shields.io/crates/l/voxly-presence)             |
+| `core/result`      | [crates/core/result](crates/core/result)           | Core: Result and Error types        | ![Crates.io Version](https://img.shields.io/crates/v/voxly-result) ![Crates.io Version](https://img.shields.io/crates/msrv/voxly-result) ![Crates.io Version](https://img.shields.io/crates/size/voxly-result) ![Crates.io License](https://img.shields.io/crates/l/voxly-result)                     |
+| `core/coalesced`   | [crates/core/coalesced](crates/core/coalesced)     | Core: Coalescion service            | ![Crates.io Version](https://img.shields.io/crates/v/voxly-coalesced) ![Crates.io Version](https://img.shields.io/crates/msrv/voxly-coalesced) ![Crates.io Version](https://img.shields.io/crates/size/voxly-coalesced) ![Crates.io License](https://img.shields.io/crates/l/voxly-coalesced)         |
 | `delta`            | [crates/delta](crates/delta)                       | REST API server                     | ![License](https://img.shields.io/badge/license-AGPL--3.0--or--later-blue)                                                                                                                                                                                                                                |
 | `bonfire`          | [crates/bonfire](crates/bonfire)                   | WebSocket events server             | ![License](https://img.shields.io/badge/license-AGPL--3.0--or--later-blue)                                                                                                                                                                                                                                |
 | `services/january` | [crates/services/january](crates/services/january) | Proxy server                        | ![License](https://img.shields.io/badge/license-AGPL--3.0--or--later-blue)                                                                                                                                                                                                                                |
@@ -39,7 +39,7 @@ Rust 1.86.0 or higher.
 
 ## Development Guide
 
-Before contributing, make yourself familiar with [our contribution guidelines](https://developers.revolt.chat/contrib.html) and the [technical documentation for this project](https://revoltchat.github.io/backend/).
+Before contributing, make yourself familiar with [our contribution guidelines](https://developers.voxly.gg/contrib.html) and the [technical documentation for this project](https://voxly-gg.github.io/stoatchat/).
 
 Before getting started, you'll want to install:
 
@@ -59,7 +59,7 @@ As a heads-up, the development environment uses the following ports:
 | Redis                     |      6379      |
 | MinIO                     |     14009      |
 | Maildev                   | 14025<br>14080 |
-| Revolt Web App            |     14701      |
+| Voxly Web App            |     14701      |
 | RabbitMQ                  | 5672<br>15672  |
 | `crates/delta`            |     14702      |
 | `crates/bonfire`          |     14703      |
@@ -70,20 +70,20 @@ As a heads-up, the development environment uses the following ports:
 Now you can clone and build the project:
 
 ```bash
-git clone https://github.com/revoltchat/backend revolt-backend
-cd revolt-backend
+git clone https://github.com/voxly-gg/stoatchat voxly-backend
+cd voxly-backend
 mise build
 ```
 
-A default configuration `Revolt.toml` is present in this project that is suited for development.
+A default configuration `Voxly.toml` is present in this project that is suited for development.
 
-If you'd like to change anything, create a `Revolt.overrides.toml` file and specify relevant variables.
+If you'd like to change anything, create a `Voxly.overrides.toml` file and specify relevant variables.
 
 > [!TIP]
 > Use Sentry to catch unexpected service errors:
 >
 > ```toml
-> # Revolt.overrides.toml
+> # Voxly.overrides.toml
 > [sentry]
 > api = "https://abc@your.sentry/1"
 > events = "https://abc@your.sentry/1"
@@ -111,11 +111,11 @@ If you'd like to change anything, create a `Revolt.overrides.toml` file and spec
 >       - "14672:15672"
 > ```
 >
-> And corresponding Revolt configuration:
+> And corresponding Voxly configuration:
 >
 > ```toml
-> #     Revolt.overrides.toml
-> # and Revolt.test-overrides.toml
+> #     Voxly.overrides.toml
+> # and Voxly.test-overrides.toml
 > [database]
 > mongodb = "mongodb://127.0.0.1:14017"
 > redis = "redis://127.0.0.1:14079/"
@@ -134,17 +134,17 @@ docker compose up -d
 ./scripts/start.sh
 # .. or individually
 # run the API server
-cargo run --bin revolt-delta
+cargo run --bin voxly-delta
 # run the events server
-cargo run --bin revolt-bonfire
+cargo run --bin voxly-bonfire
 # run the file server
-cargo run --bin revolt-autumn
+cargo run --bin voxly-autumn
 # run the proxy server
-cargo run --bin revolt-january
+cargo run --bin voxly-january
 # run the tenor proxy
-cargo run --bin revolt-gifbox
+cargo run --bin voxly-gifbox
 # run the push daemon (not usually needed in regular development)
-cargo run --bin revolt-pushd
+cargo run --bin voxly-pushd
 
 # hint:
 # mold -run <cargo build, cargo run, etc...>
@@ -158,15 +158,15 @@ You can start a web client by doing the following:
 corepack enable
 
 # clone the web client and run it:
-git clone --recursive https://github.com/revoltchat/revite
-cd revite
+git clone --recursive https://github.com/voxly-gg/for-web
+cd for-web
 yarn
 yarn build:deps
-echo "VITE_API_URL=http://local.revolt.chat:14702" > .env.local
+echo "VITE_API_URL=http://localhost:14702" > .env.local
 yarn dev --port 14701
 ```
 
-Then go to http://local.revolt.chat:14701 to create an account/login.
+Then go to http://localhost:14701 to create an account/login.
 
 When signing up, go to http://localhost:14080 to find confirmation/password reset emails.
 
@@ -198,7 +198,7 @@ Tag and push a new release by running:
 just release
 ```
 
-If you have bumped the crate versions, proceed to [GitHub releases](https://github.com/revoltchat/backend/releases/new) to create a changelog.
+If you have bumped the crate versions, proceed to [GitHub releases](https://github.com/voxly-gg/stoatchat/releases/new) to create a changelog.
 
 ## Testing
 
@@ -217,6 +217,6 @@ TEST_DB=MONGODB cargo nextest run
 
 ## License
 
-The Revolt backend is generally licensed under the [GNU Affero General Public License v3.0](https://github.com/revoltchat/backend/blob/master/LICENSE).
+The Voxly backend is generally licensed under the [GNU Affero General Public License v3.0](https://github.com/voxly-gg/stoatchat/blob/master/LICENSE).
 
 **Individual crates may supply their own licenses!**

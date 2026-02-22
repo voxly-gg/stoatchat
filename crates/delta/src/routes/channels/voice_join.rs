@@ -1,5 +1,5 @@
-use revolt_config::config;
-use revolt_database::{
+use voxly_config::config;
+use voxly_database::{
     util::{permissions::perms, reference::Reference},
     voice::{
         delete_voice_state, get_channel_node, get_user_voice_channels, get_voice_channel_members,
@@ -7,9 +7,9 @@ use revolt_database::{
     },
     Database, User,
 };
-use revolt_models::v0;
-use revolt_permissions::{calculate_channel_permissions, ChannelPermission};
-use revolt_result::{create_error, Result};
+use voxly_models::v0;
+use voxly_permissions::{calculate_channel_permissions, ChannelPermission};
+use voxly_result::{create_error, Result};
 
 use rocket::{serde::json::Json, State};
 

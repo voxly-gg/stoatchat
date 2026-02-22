@@ -1,6 +1,6 @@
-use revolt_database::{Database, User};
-use revolt_models::v0;
-use revolt_result::Result;
+use voxly_database::{Database, User};
+use voxly_models::v0;
+use voxly_result::Result;
 use rocket::{serde::json::Json, State};
 
 /// # Fetch Direct Message Channels

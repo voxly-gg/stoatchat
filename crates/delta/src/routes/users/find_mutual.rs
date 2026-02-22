@@ -1,10 +1,10 @@
-use revolt_database::util::permissions::DatabasePermissionQuery;
-use revolt_database::util::reference::Reference;
-use revolt_database::{Database, User};
-use revolt_models::v0;
+use voxly_database::util::permissions::DatabasePermissionQuery;
+use voxly_database::util::reference::Reference;
+use voxly_database::{Database, User};
+use voxly_models::v0;
 
-use revolt_permissions::{calculate_user_permissions, UserPermission};
-use revolt_result::{create_error, Result};
+use voxly_permissions::{calculate_user_permissions, UserPermission};
+use voxly_result::{create_error, Result};
 use rocket::serde::json::Json;
 use rocket::State;
 

@@ -1,9 +1,9 @@
 use authifier::models::Session;
 use once_cell::sync::Lazy;
 use regex::Regex;
-use revolt_database::{Database, User};
-use revolt_models::v0;
-use revolt_result::{create_error, Result};
+use voxly_database::{Database, User};
+use voxly_models::v0;
+use voxly_result::{create_error, Result};
 
 use rocket::{serde::json::Json, State};
 use serde::{Deserialize, Serialize};
@@ -25,7 +25,7 @@ pub struct DataOnboard {
 
 /// # Complete Onboarding
 ///
-/// This sets a new username, completes onboarding and allows a user to start using Revolt.
+/// This sets a new username, completes onboarding and allows a user to start using Voxly.
 #[openapi(tag = "Onboarding")]
 #[post("/complete", data = "<data>")]
 pub async fn complete(

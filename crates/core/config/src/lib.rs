@@ -22,7 +22,7 @@ macro_rules! report_error {
                     $crate::Level::Error,
                 );
             })
-            .map_err(|_| ::revolt_result::create_error!($error))
+            .map_err(|_| ::voxly_result::create_error!($error))
     };
 }
 
@@ -48,34 +48,34 @@ macro_rules! report_internal_error {
                     $crate::Level::Error,
                 );
             })
-            .map_err(|_| ::revolt_result::create_error!(InternalError))
+            .map_err(|_| ::voxly_result::create_error!(InternalError))
     };
 }
 
 /// Paths to search for configuration
 static CONFIG_SEARCH_PATHS: [&str; 3] = [
     // current working directory
-    "Revolt.toml",
+    "Voxly.toml",
     // current working directory - overrides file
-    "Revolt.overrides.toml",
+    "Voxly.overrides.toml",
     // root directory, for Docker containers
-    "/Revolt.toml",
+    "/Voxly.toml",
 ];
 
 /// Path to search for test overrides
-static TEST_OVERRIDE_PATH: &str = "Revolt.test-overrides.toml";
+static TEST_OVERRIDE_PATH: &str = "Voxly.test-overrides.toml";
 
 /// Configuration builder
 static CONFIG_BUILDER: Lazy<RwLock<Config>> = Lazy::new(|| {
     RwLock::new({
         let mut builder = Config::builder().add_source(File::from_str(
-            include_str!("../Revolt.toml"),
+            include_str!("../Voxly.toml"),
             FileFormat::Toml,
         ));
 
         if std::env::var("TEST_DB").is_ok() {
             builder = builder.add_source(File::from_str(
-                include_str!("../Revolt.test.toml"),
+                include_str!("../Voxly.test.toml"),
                 FileFormat::Toml,
             ));
 
@@ -435,7 +435,7 @@ impl Settings {
 
 pub async fn init() {
     println!(
-        ":: Revolt Configuration ::\n\x1b[32m{:?}\x1b[0m",
+        ":: Voxly Configuration ::\n\x1b[32m{:?}\x1b[0m",
         config().await
     );
 }
@@ -454,7 +454,7 @@ pub async fn config() -> Settings {
     }
 
     // auto-detect production nodes
-    if config.hosts.api.contains("https") && config.hosts.api.contains("revolt.chat") {
+    if config.hosts.api.contains("https") && config.hosts.api.contains("voxly.gg") {
         config.production = true;
     }
 

@@ -1,11 +1,11 @@
-use revolt_database::{
+use voxly_database::{
     util::{permissions::DatabasePermissionQuery, reference::Reference}, voice::{sync_voice_permissions, VoiceClient}, Database, PartialServer, User
 };
-use revolt_models::v0;
-use revolt_permissions::{
+use voxly_models::v0;
+use voxly_permissions::{
     calculate_server_permissions, ChannelPermission, DataPermissionsValue, Override,
 };
-use revolt_result::Result;
+use voxly_result::Result;
 use rocket::{serde::json::Json, State};
 
 /// # Set Default Permission

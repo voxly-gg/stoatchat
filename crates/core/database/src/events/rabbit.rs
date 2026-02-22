@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-use revolt_models::v0::PushNotification;
+use voxly_models::v0::PushNotification;
 use serde::{Deserialize, Serialize};
 
 use crate::User;

@@ -1,6 +1,6 @@
 use iso8601_timestamp::Timestamp;
-use revolt_models::v0::*;
-use revolt_permissions::{calculate_user_permissions, UserPermission};
+use voxly_models::v0::*;
+use voxly_permissions::{calculate_user_permissions, UserPermission};
 
 use crate::{util::permissions::DatabasePermissionQuery, Database};
 
@@ -1020,7 +1020,7 @@ impl crate::User {
             },
             badges,
             online: can_see_profile
-                && revolt_presence::is_online(&self.id).await
+                && voxly_presence::is_online(&self.id).await
                 && !matches!(
                     self.status,
                     Some(crate::UserStatus {
@@ -1151,7 +1151,7 @@ impl crate::User {
                 })
                 .unwrap_or_default(),
             badges,
-            online: (force_online || revolt_presence::is_online(&self.id).await)
+            online: (force_online || voxly_presence::is_online(&self.id).await)
                 && !matches!(
                     self.status,
                     Some(crate::UserStatus {

@@ -1,11 +1,11 @@
 [package]
-name = "revolt-files"
+name = "voxly-files"
 version = "0.11.5"
 edition = "2021"
 license = "AGPL-3.0-or-later"
 authors = ["Paul Makles <me@insrt.uk>"]
-description = "Revolt Backend: S3 and encryption subroutines"
-repository = "https://github.com/stoatchat/stoatchat"
+description = "Voxly Backend: S3 and encryption subroutines"
+repository = "https://github.com/voxly-gg/stoatchat"
 
 [dependencies]
 anyhow = { workspace = true }
@@ -27,10 +27,10 @@ typenum = "1.17.0"
 aws-config = "1.5.5"
 aws-sdk-s3 = { version = "1.46.0", features = ["behavior-version-latest"] }
 
-revolt-config = { version = "0.11.5", path = "../config", features = [
+voxly-config = { version = "0.11.5", path = "../config", features = [
     "report-macros",
 ] }
-revolt-result = { version = "0.11.5", path = "../result" }
+voxly-result = { version = "0.11.5", path = "../result" }
 
 # image processing
 jxl-oxide = { workspace = true }

@@ -8,7 +8,7 @@ use base64::{
     engine::{self},
     Engine as _,
 };
-use revolt_database::{events::rabbit::*, util::format_display_name, Database};
+use voxly_database::{events::rabbit::*, util::format_display_name, Database};
 use web_push::{
     ContentEncoding, IsahcWebPushClient, SubscriptionInfo, SubscriptionKeys, VapidSignatureBuilder,
     WebPushClient, WebPushError, WebPushMessageBuilder,
@@ -22,7 +22,7 @@ pub struct VapidOutboundConsumer {
 
 impl VapidOutboundConsumer {
     pub async fn new(db: Database) -> Result<VapidOutboundConsumer> {
-        let config = revolt_config::config().await;
+        let config = voxly_config::config().await;
 
         if config.pushd.vapid.private_key.is_empty() | config.pushd.vapid.public_key.is_empty() {
             bail!("no Vapid keys present");
@@ -120,10 +120,10 @@ impl VapidOutboundConsumer {
                 let mut body = HashMap::new();
 
                 match channel {
-                    revolt_database::Channel::DirectMessage { .. } => {
+                    voxly_database::Channel::DirectMessage { .. } => {
                         body.insert("body", format!("{} is calling you", initiator_name));
                     }
-                    revolt_database::Channel::Group { name, .. } => {
+                    voxly_database::Channel::Group { name, .. } => {
                         body.insert(
                             "body",
                             format!("{} is calling your group, {}", initiator_name, name),
@@ -183,7 +183,7 @@ impl AsyncConsumer for VapidOutboundConsumer {
             .consume_event(channel, deliver, basic_properties, content)
             .await
         {
-            revolt_config::capture_anyhow(&err);
+            voxly_config::capture_anyhow(&err);
             eprintln!("Failed to process Vapid event: {err:?}");
         }
     }

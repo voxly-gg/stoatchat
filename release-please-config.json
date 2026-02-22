@@ -33,7 +33,7 @@
                 {
                     "type": "toml",
                     "path": "crates/core/config/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-result'].version"
+                    "jsonpath": "$.dependencies['voxly-result'].version"
                 },
                 {
                     "type": "toml",
@@ -43,32 +43,32 @@
                 {
                     "type": "toml",
                     "path": "crates/core/database/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-config'].version"
+                    "jsonpath": "$.dependencies['voxly-config'].version"
                 },
                 {
                     "type": "toml",
                     "path": "crates/core/database/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-result'].version"
+                    "jsonpath": "$.dependencies['voxly-result'].version"
                 },
                 {
                     "type": "toml",
                     "path": "crates/core/database/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-models'].version"
+                    "jsonpath": "$.dependencies['voxly-models'].version"
                 },
                 {
                     "type": "toml",
                     "path": "crates/core/database/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-presence'].version"
+                    "jsonpath": "$.dependencies['voxly-presence'].version"
                 },
                 {
                     "type": "toml",
                     "path": "crates/core/database/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-permissions'].version"
+                    "jsonpath": "$.dependencies['voxly-permissions'].version"
                 },
                 {
                     "type": "toml",
                     "path": "crates/core/database/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-parser'].version"
+                    "jsonpath": "$.dependencies['voxly-parser'].version"
                 },
                 {
                     "type": "toml",
@@ -78,12 +78,12 @@
                 {
                     "type": "toml",
                     "path": "crates/core/files/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-config'].version"
+                    "jsonpath": "$.dependencies['voxly-config'].version"
                 },
                 {
                     "type": "toml",
                     "path": "crates/core/files/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-result'].version"
+                    "jsonpath": "$.dependencies['voxly-result'].version"
                 },
                 {
                     "type": "toml",
@@ -93,12 +93,12 @@
                 {
                     "type": "toml",
                     "path": "crates/core/models/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-config'].version"
+                    "jsonpath": "$.dependencies['voxly-config'].version"
                 },
                 {
                     "type": "toml",
                     "path": "crates/core/models/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-permissions'].version"
+                    "jsonpath": "$.dependencies['voxly-permissions'].version"
                 },
                 {
                     "type": "toml",
@@ -113,7 +113,7 @@
                 {
                     "type": "toml",
                     "path": "crates/core/permissions/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-result'].version"
+                    "jsonpath": "$.dependencies['voxly-result'].version"
                 },
                 {
                     "type": "toml",
@@ -123,7 +123,7 @@
                 {
                     "type": "toml",
                     "path": "crates/core/presence/Cargo.toml",
-                    "jsonpath": "$['dev-dependencies']['revolt-config'].version"
+                    "jsonpath": "$['dev-dependencies']['voxly-config'].version"
                 },
                 {
                     "type": "toml",
@@ -133,17 +133,17 @@
                 {
                     "type": "toml",
                     "path": "crates/core/ratelimits/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-database'].version"
+                    "jsonpath": "$.dependencies['voxly-database'].version"
                 },
                 {
                     "type": "toml",
                     "path": "crates/core/ratelimits/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-result'].version"
+                    "jsonpath": "$.dependencies['voxly-result'].version"
                 },
                 {
                     "type": "toml",
                     "path": "crates/core/ratelimits/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-config'].version"
+                    "jsonpath": "$.dependencies['voxly-config'].version"
                 },
                 {
                     "type": "toml",
@@ -158,22 +158,22 @@
                 {
                     "type": "toml",
                     "path": "crates/daemons/crond/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-database'].version"
+                    "jsonpath": "$.dependencies['voxly-database'].version"
                 },
                 {
                     "type": "toml",
                     "path": "crates/daemons/crond/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-result'].version"
+                    "jsonpath": "$.dependencies['voxly-result'].version"
                 },
                 {
                     "type": "toml",
                     "path": "crates/daemons/crond/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-config'].version"
+                    "jsonpath": "$.dependencies['voxly-config'].version"
                 },
                 {
                     "type": "toml",
                     "path": "crates/daemons/crond/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-files'].version"
+                    "jsonpath": "$.dependencies['voxly-files'].version"
                 },
                 {
                     "type": "toml",
@@ -183,27 +183,27 @@
                 {
                     "type": "toml",
                     "path": "crates/daemons/pushd/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-result'].version"
+                    "jsonpath": "$.dependencies['voxly-result'].version"
                 },
                 {
                     "type": "toml",
                     "path": "crates/daemons/pushd/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-config'].version"
+                    "jsonpath": "$.dependencies['voxly-config'].version"
                 },
                 {
                     "type": "toml",
                     "path": "crates/daemons/pushd/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-database'].version"
+                    "jsonpath": "$.dependencies['voxly-database'].version"
                 },
                 {
                     "type": "toml",
                     "path": "crates/daemons/pushd/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-models'].version"
+                    "jsonpath": "$.dependencies['voxly-models'].version"
                 },
                 {
                     "type": "toml",
                     "path": "crates/daemons/pushd/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-presence'].version"
+                    "jsonpath": "$.dependencies['voxly-presence'].version"
                 },
                 {
                     "type": "toml",
@@ -218,27 +218,27 @@
                 {
                     "type": "toml",
                     "path": "crates/services/autumn/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-files'].version"
+                    "jsonpath": "$.dependencies['voxly-files'].version"
                 },
                 {
                     "type": "toml",
                     "path": "crates/services/autumn/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-config'].version"
+                    "jsonpath": "$.dependencies['voxly-config'].version"
                 },
                 {
                     "type": "toml",
                     "path": "crates/services/autumn/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-database'].version"
+                    "jsonpath": "$.dependencies['voxly-database'].version"
                 },
                 {
                     "type": "toml",
                     "path": "crates/services/autumn/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-result'].version"
+                    "jsonpath": "$.dependencies['voxly-result'].version"
                 },
                 {
                     "type": "toml",
                     "path": "crates/services/autumn/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-ratelimits'].version"
+                    "jsonpath": "$.dependencies['voxly-ratelimits'].version"
                 },
                 {
                     "type": "toml",
@@ -248,32 +248,32 @@
                 {
                     "type": "toml",
                     "path": "crates/services/gifbox/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-config'].version"
+                    "jsonpath": "$.dependencies['voxly-config'].version"
                 },
                 {
                     "type": "toml",
                     "path": "crates/services/gifbox/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-models'].version"
+                    "jsonpath": "$.dependencies['voxly-models'].version"
                 },
                 {
                     "type": "toml",
                     "path": "crates/services/gifbox/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-result'].version"
+                    "jsonpath": "$.dependencies['voxly-result'].version"
                 },
                 {
                     "type": "toml",
                     "path": "crates/services/gifbox/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-coalesced'].version"
+                    "jsonpath": "$.dependencies['voxly-coalesced'].version"
                 },
                 {
                     "type": "toml",
                     "path": "crates/services/gifbox/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-database'].version"
+                    "jsonpath": "$.dependencies['voxly-database'].version"
                 },
                 {
                     "type": "toml",
                     "path": "crates/services/gifbox/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-ratelimits'].version"
+                    "jsonpath": "$.dependencies['voxly-ratelimits'].version"
                 },
                 {
                     "type": "toml",
@@ -283,22 +283,22 @@
                 {
                     "type": "toml",
                     "path": "crates/services/january/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-config'].version"
+                    "jsonpath": "$.dependencies['voxly-config'].version"
                 },
                 {
                     "type": "toml",
                     "path": "crates/services/january/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-models'].version"
+                    "jsonpath": "$.dependencies['voxly-models'].version"
                 },
                 {
                     "type": "toml",
                     "path": "crates/services/january/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-result'].version"
+                    "jsonpath": "$.dependencies['voxly-result'].version"
                 },
                 {
                     "type": "toml",
                     "path": "crates/services/january/Cargo.toml",
-                    "jsonpath": "$.dependencies['revolt-files'].version"
+                    "jsonpath": "$.dependencies['voxly-files'].version"
                 }
             ]
         }

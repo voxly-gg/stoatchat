@@ -7,9 +7,9 @@ use livekit_api::{
     services::room::{CreateRoomOptions, RoomClient as InnerRoomClient, UpdateParticipantOptions},
 };
 use livekit_protocol::{ParticipantInfo, ParticipantPermission, Room};
-use revolt_config::{config, LiveKitNode};
-use revolt_permissions::{ChannelPermission, PermissionValue};
-use revolt_result::{create_error, Result, ToRevoltError};
+use voxly_config::{config, LiveKitNode};
+use voxly_permissions::{ChannelPermission, PermissionValue};
+use voxly_result::{create_error, Result, ToVoxlyError};
 use std::{collections::HashMap, time::Duration};
 
 use super::get_allowed_sources;
@@ -51,7 +51,7 @@ impl VoiceClient {
         !self.rooms.is_empty()
     }
 
-    pub async fn from_revolt_config() -> Self {
+    pub async fn from_voxly_config() -> Self {
         let config = config().await;
 
         Self::new(config.api.livekit.nodes.clone())

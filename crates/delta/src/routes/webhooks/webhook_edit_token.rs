@@ -1,8 +1,8 @@
-use revolt_database::util::reference::Reference;
-use revolt_database::{Database, File, PartialWebhook};
-use revolt_models::v0::{DataEditWebhook, Webhook};
-use revolt_models::validator::Validate;
-use revolt_result::{create_error, Result};
+use voxly_database::util::reference::Reference;
+use voxly_database::{Database, File, PartialWebhook};
+use voxly_models::v0::{DataEditWebhook, Webhook};
+use voxly_models::validator::Validate;
+use voxly_result::{create_error, Result};
 use rocket::{serde::json::Json, State};
 
 /// # Edits a webhook

@@ -1,13 +1,13 @@
-use revolt_database::{Bot, Database, User};
-use revolt_models::v0;
-use revolt_result::{create_error, Result};
+use voxly_database::{Bot, Database, User};
+use voxly_models::v0;
+use voxly_result::{create_error, Result};
 use rocket::serde::json::Json;
 use rocket::State;
 use validator::Validate;
 
 /// # Create Bot
 ///
-/// Create a new Revolt bot.
+/// Create a new Voxly bot.
 #[openapi(tag = "Bots")]
 #[post("/create", data = "<info>")]
 pub async fn create_bot(
@@ -32,7 +32,7 @@ pub async fn create_bot(
 #[cfg(test)]
 mod test {
     use crate::{rocket, util::test::TestHarness};
-    use revolt_models::v0;
+    use voxly_models::v0;
     use rocket::http::{ContentType, Header, Status};
 
     #[rocket::async_test]

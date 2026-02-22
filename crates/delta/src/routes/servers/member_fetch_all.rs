@@ -1,10 +1,10 @@
-use revolt_database::{
+use voxly_database::{
     util::{permissions::DatabasePermissionQuery, reference::Reference},
     Database, User,
 };
-use revolt_models::v0;
-use revolt_permissions::PermissionQuery;
-use revolt_result::{create_error, Result};
+use voxly_models::v0;
+use voxly_permissions::PermissionQuery;
+use voxly_result::{create_error, Result};
 use rocket::{serde::json::Json, State};
 
 /// # Fetch Members

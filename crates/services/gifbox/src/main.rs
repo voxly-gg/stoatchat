@@ -2,9 +2,9 @@ use std::net::{Ipv4Addr, SocketAddr};
 
 use axum::{extract::FromRef, middleware::from_fn_with_state, Router};
 
-use revolt_config::config;
-use revolt_database::{Database, DatabaseInfo};
-use revolt_ratelimits::axum as ratelimiter;
+use voxly_config::config;
+use voxly_database::{Database, DatabaseInfo};
+use voxly_ratelimits::axum as ratelimiter;
 use tokio::net::TcpListener;
 use utoipa::{
     openapi::security::{ApiKey, ApiKeyValue, SecurityScheme},
@@ -49,7 +49,7 @@ impl Modify for SecurityAddon {
 #[tokio::main]
 async fn main() -> Result<(), std::io::Error> {
     // Configure logging and environment
-    revolt_config::configure!(gifbox);
+    voxly_config::configure!(gifbox);
 
     // Configure API schema
     #[derive(OpenApi)]
@@ -67,8 +67,8 @@ async fn main() -> Result<(), std::io::Error> {
         ),
         components(
             schemas(
-                revolt_result::Error,
-                revolt_result::ErrorType,
+                voxly_result::Error,
+                voxly_result::ErrorType,
                 types::MediaResult,
                 types::MediaObject,
             )

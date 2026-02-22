@@ -1,6 +1,6 @@
 use std::io::Cursor;
 
-use revolt_files::{EncryptionKey, FileStorageRepository, MediaImpl, MediaRepository, S3Storage};
+use voxly_files::{EncryptionKey, FileStorageRepository, MediaImpl, MediaRepository, S3Storage};
 
 #[tokio::test]
 async fn test_image_roundtrip_png() {

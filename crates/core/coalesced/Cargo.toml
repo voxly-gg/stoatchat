@@ -1,11 +1,11 @@
 [package]
-name = "revolt-coalesced"
+name = "voxly-coalesced"
 version = "0.11.5"
 edition = "2021"
 license = "MIT"
 authors = ["Paul Makles <me@insrt.uk>", "Zomatree <me@zomatree.live>"]
-description = "Revolt Backend: Coalescion service"
-repository = "https://github.com/stoatchat/stoatchat"
+description = "Voxly Backend: Coalescion service"
+repository = "https://github.com/voxly-gg/stoatchat"
 
 [features]
 tokio = ["dep:tokio"]

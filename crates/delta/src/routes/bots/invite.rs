@@ -1,11 +1,11 @@
-use revolt_database::util::permissions::DatabasePermissionQuery;
-use revolt_database::{util::reference::Reference, Database, User};
-use revolt_database::{Member, AMQP};
-use revolt_models::v0;
-use revolt_permissions::{
+use voxly_database::util::permissions::DatabasePermissionQuery;
+use voxly_database::{util::reference::Reference, Database, User};
+use voxly_database::{Member, AMQP};
+use voxly_models::v0;
+use voxly_permissions::{
     calculate_channel_permissions, calculate_server_permissions, ChannelPermission,
 };
-use revolt_result::{create_error, Result};
+use voxly_result::{create_error, Result};
 use rocket::State;
 
 use rocket::serde::json::Json;
@@ -66,8 +66,8 @@ pub async fn invite_bot(
 #[cfg(test)]
 mod test {
     use crate::{rocket, util::test::TestHarness};
-    use revolt_database::{events::client::EventV1, Bot, Channel, Server};
-    use revolt_models::v0::{self, DataCreateServer};
+    use voxly_database::{events::client::EventV1, Bot, Channel, Server};
+    use voxly_models::v0::{self, DataCreateServer};
     use rocket::http::{ContentType, Header, Status};
 
     #[rocket::async_test]

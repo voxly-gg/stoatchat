@@ -4,7 +4,7 @@ use std::{sync::Arc, time::Duration};
 
 use lru_time_cache::LruCache;
 use reqwest::Client;
-use revolt_coalesced::{CoalescionService, CoalescionServiceConfig};
+use voxly_coalesced::{CoalescionService, CoalescionServiceConfig};
 use serde::de::DeserializeOwned;
 use tokio::sync::RwLock;
 
@@ -67,12 +67,12 @@ impl Tenor {
             .send()
             .await
             .inspect_err(|e| {
-                revolt_config::capture_error(e);
+                voxly_config::capture_error(e);
             })
             .map_err(|_| TenorError::HttpError)?;
 
         let text = response.text().await.map_err(|e| {
-            revolt_config::capture_error(&e);
+            voxly_config::capture_error(&e);
             TenorError::HttpError
         })?;
 

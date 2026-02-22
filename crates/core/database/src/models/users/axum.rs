@@ -1,6 +1,6 @@
 use axum::{extract::{FromRef, FromRequestParts}, http::request::Parts};
 
-use revolt_result::{create_error, Error, Result};
+use voxly_result::{create_error, Error, Result};
 
 use crate::{Database, User};
 

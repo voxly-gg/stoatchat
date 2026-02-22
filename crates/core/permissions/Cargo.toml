@@ -1,11 +1,11 @@
 [package]
-name = "revolt-permissions"
+name = "voxly-permissions"
 version = "0.11.5"
 edition = "2021"
 license = "MIT"
 authors = ["Paul Makles <me@insrt.uk>"]
-description = "Revolt Backend: Permission Logic"
-repository = "https://github.com/stoatchat/stoatchat"
+description = "Voxly Backend: Permission Logic"
+repository = "https://github.com/voxly-gg/stoatchat"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -22,7 +22,7 @@ async-std = { version = "1.8.0", features = ["attributes"] }
 
 [dependencies]
 # Core
-revolt-result = { version = "0.11.5", path = "../result" }
+voxly-result = { version = "0.11.5", path = "../result" }
 
 # Utility
 auto_ops = "0.3.0"

@@ -1,6 +1,6 @@
 use std::collections::HashSet;
 
-use revolt_database::{
+use voxly_database::{
     events::client::EventV1,
     util::{
         permissions::{perms, DatabasePermissionQuery},
@@ -13,12 +13,12 @@ use revolt_database::{
     },
     Database, File, PartialMember, User,
 };
-use revolt_models::v0::{self, FieldsMember};
+use voxly_models::v0::{self, FieldsMember};
 
-use revolt_permissions::{
+use voxly_permissions::{
     calculate_channel_permissions, calculate_server_permissions, ChannelPermission,
 };
-use revolt_result::{create_error, Result};
+use voxly_result::{create_error, Result};
 use rocket::{form::validate::Contains, serde::json::Json, State};
 use validator::Validate;
 

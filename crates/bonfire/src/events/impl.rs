@@ -1,16 +1,16 @@
 use std::collections::{HashMap, HashSet};
 
 use futures::future::join_all;
-use revolt_database::{
+use voxly_database::{
     events::client::{EventV1, ReadyPayloadFields},
     util::permissions::DatabasePermissionQuery,
     voice::get_channel_voice_state,
     Channel, Database, Member, MemberCompositeKey, Presence, RelationshipStatus,
 };
-use revolt_models::v0;
-use revolt_permissions::{calculate_channel_permissions, ChannelPermission};
-use revolt_presence::filter_online;
-use revolt_result::Result;
+use voxly_models::v0;
+use voxly_permissions::{calculate_channel_permissions, ChannelPermission};
+use voxly_presence::filter_online;
+use voxly_result::Result;
 
 use super::state::{Cache, State};
 

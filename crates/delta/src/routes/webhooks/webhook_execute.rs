@@ -1,11 +1,11 @@
-use revolt_config::config;
-use revolt_database::{
+use voxly_config::config;
+use voxly_database::{
     util::{idempotency::IdempotencyKey, reference::Reference},
     Database, Message, AMQP,
 };
-use revolt_models::v0;
-use revolt_permissions::{ChannelPermission, PermissionValue};
-use revolt_result::{create_error, Result};
+use voxly_models::v0;
+use voxly_permissions::{ChannelPermission, PermissionValue};
+use voxly_result::{create_error, Result};
 use rocket::{serde::json::Json, State};
 
 use validator::Validate;

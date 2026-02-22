@@ -1,7 +1,7 @@
-use revolt_database::util::reference::Reference;
-use revolt_database::{Database, User};
-use revolt_models::v0;
-use revolt_result::Result;
+use voxly_database::util::reference::Reference;
+use voxly_database::{Database, User};
+use voxly_models::v0;
+use voxly_result::Result;
 use rocket::serde::json::Json;
 use rocket::State;
 

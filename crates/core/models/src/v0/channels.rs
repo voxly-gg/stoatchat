@@ -1,7 +1,7 @@
 #![allow(deprecated)]
 use super::{File, UserVoiceState};
 
-use revolt_permissions::{Override, OverrideField};
+use voxly_permissions::{Override, OverrideField};
 use std::collections::{HashMap, HashSet};
 
 #[cfg(feature = "rocket")]

@@ -2,7 +2,7 @@ use ::mongodb::options::{Collation, CollationStrength, FindOneOptions, FindOptio
 use authifier::models::Session;
 use futures::StreamExt;
 use iso8601_timestamp::Timestamp;
-use revolt_result::Result;
+use voxly_result::Result;
 
 use crate::DocumentId;
 use crate::IntoDocumentPath;

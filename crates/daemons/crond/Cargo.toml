@@ -1,10 +1,10 @@
 [package]
-name = "revolt-crond"
+name = "voxly-crond"
 version = "0.11.5"
 license = "AGPL-3.0-or-later"
 authors = ["Paul Makles <me@insrt.uk>"]
 edition = "2021"
-description = "Revolt Daemon Service: Timed data clean up tasks"
+description = "Voxly Daemon Service: Timed data clean up tasks"
 publish = false
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -17,7 +17,7 @@ log = "0.4"
 tokio = { version = "1" }
 
 # Core
-revolt-database = { version = "0.11.5", path = "../../core/database" }
-revolt-result = { version = "0.11.5", path = "../../core/result" }
-revolt-config = { version = "0.11.5", path = "../../core/config" }
-revolt-files = { version = "0.11.5", path = "../../core/files" }
+voxly-database = { version = "0.11.5", path = "../../core/database" }
+voxly-result = { version = "0.11.5", path = "../../core/result" }
+voxly-config = { version = "0.11.5", path = "../../core/config" }
+voxly-files = { version = "0.11.5", path = "../../core/files" }

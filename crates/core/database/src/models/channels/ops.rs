@@ -1,5 +1,5 @@
-use crate::{revolt_result::Result, Channel, FieldsChannel, PartialChannel};
-use revolt_permissions::OverrideField;
+use crate::{voxly_result::Result, Channel, FieldsChannel, PartialChannel};
+use voxly_permissions::OverrideField;
 
 #[cfg(feature = "mongodb")]
 mod mongodb;

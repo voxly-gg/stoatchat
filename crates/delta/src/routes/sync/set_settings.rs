@@ -1,8 +1,8 @@
-use revolt_database::{Database, User, UserSettingsImpl};
-use revolt_models::v0;
+use voxly_database::{Database, User, UserSettingsImpl};
+use voxly_models::v0;
 
 use chrono::prelude::*;
-use revolt_result::Result;
+use voxly_result::Result;
 use rocket::{serde::json::Json, State};
 use rocket_empty::EmptyResponse;
 use std::collections::HashMap;

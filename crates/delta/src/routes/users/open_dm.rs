@@ -1,10 +1,10 @@
-use revolt_database::{
+use voxly_database::{
     util::{permissions::DatabasePermissionQuery, reference::Reference},
     Channel, Database, User,
 };
-use revolt_models::v0;
-use revolt_permissions::{calculate_user_permissions, UserPermission};
-use revolt_result::Result;
+use voxly_models::v0;
+use voxly_permissions::{calculate_user_permissions, UserPermission};
+use voxly_result::Result;
 use rocket::{serde::json::Json, State};
 
 /// # Open Direct Message

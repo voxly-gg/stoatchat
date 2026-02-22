@@ -1,11 +1,11 @@
-use revolt_database::{
+use voxly_database::{
     util::{permissions::DatabasePermissionQuery, reference::Reference},
     voice::{sync_voice_permissions, VoiceClient},
     Database, User,
 };
-use revolt_models::v0;
-use revolt_permissions::{calculate_server_permissions, ChannelPermission, Override};
-use revolt_result::{create_error, Result};
+use voxly_models::v0;
+use voxly_permissions::{calculate_server_permissions, ChannelPermission, Override};
+use voxly_result::{create_error, Result};
 use rocket::{serde::json::Json, State};
 
 /// # Set Role Permission

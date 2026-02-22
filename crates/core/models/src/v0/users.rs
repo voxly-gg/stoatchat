@@ -44,7 +44,7 @@ auto_derived_partial!(
 
         /// Bitfield of user badges
         ///
-        /// https://docs.rs/revolt-models/latest/revolt_models/v0/enum.UserBadges.html
+        /// https://docs.rs/voxly-models/latest/voxly_models/v0/enum.UserBadges.html
         #[cfg_attr(
             feature = "serde",
             serde(skip_serializing_if = "crate::if_zero_u32", default)
@@ -56,7 +56,7 @@ auto_derived_partial!(
 
         /// Enum of user flags
         ///
-        /// https://docs.rs/revolt-models/latest/revolt_models/v0/enum.UserFlags.html
+        /// https://docs.rs/voxly-models/latest/voxly_models/v0/enum.UserFlags.html
         #[cfg_attr(
             feature = "serde",
             serde(skip_serializing_if = "crate::if_zero_u32", default)
@@ -166,15 +166,15 @@ auto_derived!(
     /// User badge bitfield
     #[repr(u32)]
     pub enum UserBadges {
-        /// Revolt Developer
+        /// Voxly Developer
         Developer = 1,
-        /// Helped translate Revolt
+        /// Helped translate Voxly
         Translator = 2,
-        /// Monetarily supported Revolt
+        /// Monetarily supported Voxly
         Supporter = 4,
         /// Responsibly disclosed a security issue
         ResponsibleDisclosure = 8,
-        /// Revolt Founder
+        /// Voxly Founder
         Founder = 16,
         /// Platform moderator
         PlatformModeration = 32,

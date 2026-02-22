@@ -1,8 +1,8 @@
 use std::env;
 
-use revolt_database::DatabaseInfo;
-use revolt_database::{voice::VoiceClient, AMQP};
-use revolt_result::Result;
+use voxly_database::DatabaseInfo;
+use voxly_database::{voice::VoiceClient, AMQP};
+use voxly_result::Result;
 use rocket::{build, routes, Config};
 use std::net::Ipv4Addr;
 
@@ -11,12 +11,12 @@ mod guard;
 
 #[rocket::main]
 async fn main() -> Result<(), rocket::Error> {
-    revolt_config::configure!(voice_ingress);
+    voxly_config::configure!(voice_ingress);
 
     let amqp = AMQP::new_auto().await;
 
     let database = DatabaseInfo::Auto.connect().await.unwrap();
-    let voice_client = VoiceClient::from_revolt_config().await;
+    let voice_client = VoiceClient::from_voxly_config().await;
 
     let _rocket = build()
         .manage(database)

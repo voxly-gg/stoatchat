@@ -1,10 +1,10 @@
-use revolt_database::{
+use voxly_database::{
     util::reference::Reference,
     voice::{is_in_voice_channel, remove_user_from_voice_channel, VoiceClient},
     Channel, Database, User, AMQP,
 };
-use revolt_permissions::ChannelPermission;
-use revolt_result::{create_error, Result};
+use voxly_permissions::ChannelPermission;
+use voxly_result::{create_error, Result};
 
 use rocket::State;
 use rocket_empty::EmptyResponse;
@@ -64,8 +64,8 @@ pub async fn remove_member(
 #[cfg(test)]
 mod test {
     use crate::{rocket, util::test::TestHarness};
-    use revolt_database::{events::client::EventV1, Channel, RelationshipStatus};
-    use revolt_models::v0;
+    use voxly_database::{events::client::EventV1, Channel, RelationshipStatus};
+    use voxly_models::v0;
     use rocket::http::{Header, Status};
 
     #[rocket::async_test]

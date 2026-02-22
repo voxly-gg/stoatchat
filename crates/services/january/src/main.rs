@@ -16,7 +16,7 @@ pub mod website_embed;
 #[tokio::main]
 async fn main() -> Result<(), std::io::Error> {
     // Configure logging and environment
-    revolt_config::configure!(proxy);
+    voxly_config::configure!(proxy);
 
     // Configure API schema
     #[derive(OpenApi)]
@@ -30,18 +30,18 @@ async fn main() -> Result<(), std::io::Error> {
         components(
             schemas(
                 api::RootResponse,
-                revolt_result::Error,
-                revolt_result::ErrorType,
-                revolt_models::v0::ImageSize,
-                revolt_models::v0::Image,
-                revolt_models::v0::Video,
-                revolt_models::v0::TwitchType,
-                revolt_models::v0::LightspeedType,
-                revolt_models::v0::BandcampType,
-                revolt_models::v0::Special,
-                revolt_models::v0::WebsiteMetadata,
-                revolt_models::v0::Text,
-                revolt_models::v0::Embed
+                voxly_result::Error,
+                voxly_result::ErrorType,
+                voxly_models::v0::ImageSize,
+                voxly_models::v0::Image,
+                voxly_models::v0::Video,
+                voxly_models::v0::TwitchType,
+                voxly_models::v0::LightspeedType,
+                voxly_models::v0::BandcampType,
+                voxly_models::v0::Special,
+                voxly_models::v0::WebsiteMetadata,
+                voxly_models::v0::Text,
+                voxly_models::v0::Embed
             )
         )
     )]

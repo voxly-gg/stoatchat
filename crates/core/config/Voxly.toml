@@ -11,14 +11,14 @@ redis = "redis://redis/"
 [hosts]
 # Web locations of various services
 # Defaults assume all services are reverse-proxied
-# See https://github.com/revoltchat/self-hosted/blob/master/Caddyfile
+# See https://github.com/voxly-gg/self-hosted/blob/master/Caddyfile
 #
 # Remember to change these to https/wss where appropriate in production!
-app = "http://local.revolt.chat"
-api = "http://local.revolt.chat/api"
-events = "ws://local.revolt.chat/ws"
-autumn = "http://local.revolt.chat/autumn"
-january = "http://local.revolt.chat/january"
+app = "http://localhost"
+api = "http://localhost/api"
+events = "ws://localhost/ws"
+autumn = "http://localhost/autumn"
+january = "http://localhost/january"
 voso_legacy = ""
 voso_legacy_ws = ""
 
@@ -34,7 +34,7 @@ password = "rabbitpass"
 
 [api.registration]
 # Whether an invite should be required for registration
-# See https://github.com/revoltchat/self-hosted#making-your-instance-invite-only
+# See https://github.com/voxly-gg/self-hosted#making-your-instance-invite-only
 invite_only = false
 
 [api.smtp]
@@ -89,7 +89,7 @@ production = true
 mass_mention_chunk_size = 200
 
 # none of these should need changing
-exchange = "revolt.notifications"
+exchange = "voxly.notifications"
 message_queue = "notifications.origin.message"
 mass_mention_queue = "notifications.origin.mass_mention" # handles messages that contain role or everyone mentions
 fr_accepted_queue = "notifications.ingest.fr_accepted"   # friend request accepted
@@ -190,7 +190,7 @@ region = "minio"
 access_key_id = "minioautumn"
 # S3 protocol access key
 secret_access_key = "minioautumn"
-default_bucket = "revolt-uploads"
+default_bucket = "voxly-uploads"
 
 
 [features]

@@ -1,9 +1,9 @@
 use std::time::Duration;
 
 use log::info;
-use revolt_database::Database;
-use revolt_files::delete_from_s3;
-use revolt_result::Result;
+use voxly_database::Database;
+use voxly_files::delete_from_s3;
+use voxly_result::Result;
 use tokio::time::sleep;
 
 pub async fn task(db: Database) -> Result<()> {

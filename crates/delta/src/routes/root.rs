@@ -1,5 +1,5 @@
-use revolt_config::config;
-use revolt_result::Result;
+use voxly_config::config;
+use voxly_result::Result;
 use rocket::serde::json::Json;
 use serde::Serialize;
 
@@ -41,7 +41,7 @@ pub struct VoiceFeature {
 
 /// # Feature Configuration
 #[derive(Serialize, JsonSchema, Debug)]
-pub struct RevoltFeatures {
+pub struct VoxlyFeatures {
     /// hCaptcha configuration
     pub captcha: CaptchaFeature,
     /// Whether email verification is enabled
@@ -73,11 +73,11 @@ pub struct BuildInformation {
 
 /// # Server Configuration
 #[derive(Serialize, JsonSchema, Debug)]
-pub struct RevoltConfig {
-    /// Revolt API Version
+pub struct VoxlyConfig {
+    /// Voxly API Version
     pub revolt: String,
-    /// Features enabled on this Revolt node
-    pub features: RevoltFeatures,
+    /// Features enabled on this Voxly node
+    pub features: VoxlyFeatures,
     /// WebSocket URL
     pub ws: String,
     /// URL pointing to the client serving this node
@@ -90,15 +90,15 @@ pub struct RevoltConfig {
 
 /// # Query Node
 ///
-/// Fetch the server configuration for this Revolt instance.
+/// Fetch the server configuration for this Voxly instance.
 #[openapi(tag = "Core")]
 #[get("/")]
-pub async fn root() -> Result<Json<RevoltConfig>> {
+pub async fn root() -> Result<Json<VoxlyConfig>> {
     let config = config().await;
 
-    Ok(Json(RevoltConfig {
+    Ok(Json(VoxlyConfig {
         revolt: env!("CARGO_PKG_VERSION").to_string(),
-        features: RevoltFeatures {
+        features: VoxlyFeatures {
             captcha: CaptchaFeature {
                 enabled: !config.api.security.captcha.hcaptcha_key.is_empty(),
                 key: config.api.security.captcha.hcaptcha_sitekey.clone(),

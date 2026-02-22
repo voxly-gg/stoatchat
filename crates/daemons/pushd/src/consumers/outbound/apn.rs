@@ -7,15 +7,15 @@ use base64::{
     engine::{self},
     Engine as _,
 };
-use revolt_a2::{
+use voxly_a2::{
     request::{
         notification::{DefaultAlert, NotificationOptions},
         payload::{APSAlert, APSSound, Payload, PayloadLike, APS},
     },
     Client, ClientConfig, Endpoint, Error, ErrorBody, ErrorReason, Priority, PushType, Response,
 };
-use revolt_database::{events::rabbit::*, Database};
-use revolt_models::v0::{Channel, Message, PushNotification};
+use voxly_database::{events::rabbit::*, Database};
+use voxly_models::v0::{Channel, Message, PushNotification};
 use serde::Serialize;
 
 // region: payload
@@ -119,7 +119,7 @@ impl ApnsOutboundConsumer {
 
 impl ApnsOutboundConsumer {
     pub async fn new(db: Database) -> Result<ApnsOutboundConsumer, &'static str> {
-        let config = revolt_config::config().await;
+        let config = voxly_config::config().await;
 
         if config.pushd.apn.pkcs8.is_empty()
             || config.pushd.apn.key_id.is_empty()
@@ -166,7 +166,7 @@ impl ApnsOutboundConsumer {
             apns_push_type: Some(PushType::Alert),
             apns_expiration: None,
             apns_priority: Some(Priority::High),
-            apns_topic: Some("chat.revolt.app"),
+            apns_topic: Some("chat.voxly.gg"),
             apns_collapse_id: None,
         };
 
@@ -401,11 +401,11 @@ impl ApnsOutboundConsumer {
                         .remove_push_subscription_by_session_id(&payload.session_id)
                         .await
                     {
-                        revolt_config::capture_error(&err);
+                        voxly_config::capture_error(&err);
                     }
                 }
                 err => {
-                    revolt_config::capture_error(&err);
+                    voxly_config::capture_error(&err);
                 }
             }
         }
@@ -428,7 +428,7 @@ impl AsyncConsumer for ApnsOutboundConsumer {
             .consume_event(channel, deliver, basic_properties, content)
             .await
         {
-            revolt_config::capture_anyhow(&err);
+            voxly_config::capture_anyhow(&err);
             eprintln!("Failed to process APN event: {err:?}");
         }
     }

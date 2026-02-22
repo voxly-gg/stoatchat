@@ -1,7 +1,7 @@
 use std::time::SystemTime;
 
 use indexmap::{IndexMap, IndexSet};
-use revolt_config::config;
+use voxly_config::config;
 
 #[cfg(feature = "validator")]
 use validator::Validate;
@@ -74,7 +74,7 @@ auto_derived_partial!(
 
         /// Bitfield of message flags
         ///
-        /// https://docs.rs/revolt-models/latest/revolt_models/v0/enum.MessageFlags.html
+        /// https://docs.rs/voxly-models/latest/voxly_models/v0/enum.MessageFlags.html
         #[cfg_attr(
             feature = "serde",
             serde(skip_serializing_if = "crate::if_zero_u32", default)
@@ -274,7 +274,7 @@ auto_derived!(
 
         /// Bitfield of message flags
         ///
-        /// https://docs.rs/revolt-models/latest/revolt_models/v0/enum.MessageFlags.html
+        /// https://docs.rs/voxly-models/latest/voxly_models/v0/enum.MessageFlags.html
         pub flags: Option<u32>,
     }
 
@@ -504,7 +504,7 @@ impl PushNotification {
         Self {
             author: author
                 .map(|x| x.username().to_string())
-                .unwrap_or_else(|| "Revolt".to_string()),
+                .unwrap_or_else(|| "Voxly".to_string()),
             icon,
             image,
             body,

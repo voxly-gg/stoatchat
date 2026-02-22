@@ -1,5 +1,5 @@
-use revolt_database::{Database, User};
-use revolt_result::Result;
+use voxly_database::{Database, User};
+use voxly_result::Result;
 
 use rocket::State;
 use rocket_empty::EmptyResponse;

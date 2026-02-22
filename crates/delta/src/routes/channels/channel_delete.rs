@@ -1,11 +1,11 @@
-use revolt_database::{
+use voxly_database::{
     AMQP, Channel, Database, PartialChannel, User, util::{permissions::DatabasePermissionQuery, reference::Reference}, voice::{
         VoiceClient, delete_voice_channel, is_in_voice_channel, remove_user_from_voice_channel
     }
 };
-use revolt_models::v0;
-use revolt_permissions::{calculate_channel_permissions, ChannelPermission};
-use revolt_result::{create_error, Result};
+use voxly_models::v0;
+use voxly_permissions::{calculate_channel_permissions, ChannelPermission};
+use voxly_result::{create_error, Result};
 use rocket::State;
 use rocket_empty::EmptyResponse;
 
@@ -72,8 +72,8 @@ pub async fn delete(
 #[cfg(test)]
 mod test {
     use crate::{rocket, util::test::TestHarness};
-    use revolt_database::{events::client::EventV1, Channel};
-    use revolt_models::v0::DataCreateGroup;
+    use voxly_database::{events::client::EventV1, Channel};
+    use voxly_models::v0::DataCreateGroup;
     use rocket::http::{Header, Status};
 
     #[rocket::async_test]

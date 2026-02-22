@@ -1,4 +1,4 @@
-use revolt_files::{EncryptionKey, FileStorageRepository, S3Storage};
+use voxly_files::{EncryptionKey, FileStorageRepository, S3Storage};
 
 #[tokio::test]
 async fn test_upload_and_download() {

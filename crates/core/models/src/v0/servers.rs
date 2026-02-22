@@ -1,6 +1,6 @@
 use super::{Channel, File, RE_COLOUR};
 
-use revolt_permissions::{Override, OverrideField};
+use voxly_permissions::{Override, OverrideField};
 use std::collections::HashMap;
 
 #[cfg(feature = "validator")]
@@ -245,11 +245,11 @@ auto_derived!(
 
         // Whether this server is age-restricted
         // nsfw: Option<bool>,
-        /// Whether this server is public and should show up on [Revolt Discover](https://rvlt.gg)
+        /// Whether this server is public and should show up on [Voxly Discover](https://voxly.gg)
         pub discoverable: Option<bool>,
         /// Whether analytics should be collected for this server
         ///
-        /// Must be enabled in order to show up on [Revolt Discover](https://rvlt.gg).
+        /// Must be enabled in order to show up on [Voxly Discover](https://voxly.gg).
         pub analytics: Option<bool>,
 
         /// Fields to remove from server object

@@ -6,7 +6,7 @@ use amqprs::{
     BasicProperties, Deliver,
 };
 use async_trait::async_trait;
-use revolt_database::{events::rabbit::*, Database};
+use voxly_database::{events::rabbit::*, Database};
 
 pub struct AckConsumer {
     #[allow(dead_code)]
@@ -86,7 +86,7 @@ impl AsyncConsumer for AckConsumer {
         }
 
         if let Ok(sessions) = self.authifier_db.find_sessions(&payload.user_id).await {
-            let config = revolt_config::config().await;
+            let config = voxly_config::config().await;
             // Step 2: find any apple sessions, since we don't need to calculate this for anything else.
             // If there's no apple sessions, we can return early
             let apple_sessions: Vec<&authifier::models::Session> = sessions
@@ -140,7 +140,7 @@ impl AsyncConsumer for AckConsumer {
                     publish_message(self, p.into(), args).await;
                 } else {
                     log::warn!("Failed to serialize ack badge update payload!");
-                    revolt_config::capture_error(&raw_service_payload.unwrap_err());
+                    voxly_config::capture_error(&raw_service_payload.unwrap_err());
                 }
             }
         }

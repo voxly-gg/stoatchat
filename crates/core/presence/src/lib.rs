@@ -197,7 +197,7 @@ mod tests {
 
     #[async_std::test]
     async fn it_works() {
-        revolt_config::config().await;
+        voxly_config::config().await;
 
         // Clear the region before we start the tests:
         clear_region(None).await;

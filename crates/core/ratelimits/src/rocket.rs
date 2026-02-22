@@ -6,10 +6,10 @@ use rocket::http::{Method, Status};
 use rocket::request::{FromRequest, Outcome};
 use rocket::serde::json::Json;
 use rocket::{Data, Request, Response, State};
-use revolt_config::config;
+use voxly_config::config;
 
-use revolt_rocket_okapi::r#gen::OpenApiGenerator;
-use revolt_rocket_okapi::request::{OpenApiFromRequest, RequestHeaderInput};
+use voxly_rocket_okapi::r#gen::OpenApiGenerator;
+use voxly_rocket_okapi::request::{OpenApiFromRequest, RequestHeaderInput};
 
 use authifier::models::Session;
 
@@ -83,7 +83,7 @@ impl OpenApiFromRequest<'_> for Ratelimiter {
         _gen: &mut OpenApiGenerator,
         _name: String,
         _required: bool,
-    ) -> revolt_rocket_okapi::Result<RequestHeaderInput> {
+    ) -> voxly_rocket_okapi::Result<RequestHeaderInput> {
         Ok(RequestHeaderInput::None)
     }
 }
